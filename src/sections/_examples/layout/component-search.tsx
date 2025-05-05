@@ -51,7 +51,7 @@ export function NavSearch({ navData = [], sx }: NavSearchProps) {
   );
 
   const paperStyles: SxProps<Theme> = {
-    width: 240,
+    width: "100%",
     [`& .${autocompleteClasses.listbox}`]: {
       [`& .${autocompleteClasses.option}`]: {
         p: 0,
@@ -91,7 +91,7 @@ export function NavSearch({ navData = [], sx }: NavSearchProps) {
           hiddenLabel
           size="small"
           variant="filled"
-          placeholder="Search..."
+          placeholder="Tìm kiếm..."
           slotProps={{
             input: {
               ...params.InputProps,

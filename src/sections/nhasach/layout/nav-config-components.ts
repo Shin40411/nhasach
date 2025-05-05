@@ -1,9 +1,8 @@
-import { orderBy, kebabCase } from 'es-toolkit';
-
 import { CONFIG } from 'src/global-config';
 
 import DanhSachSGK from '../../../_mock/_map/DanhSachSGK.json';
 import { generateNavHref } from 'src/sections/_examples/layout/href-generated';
+import { kebabCaseVietnamese } from 'src/utils/kebabVN';
 // ----------------------------------------------------------------------
 
 type CreateNavItemProps = {
@@ -18,6 +17,7 @@ export type NavItemData = {
   name: string;
   icon: string;
   href: string;
+  hrefChildren?: string;
   packageType?: string;
   class: string;
 };
@@ -25,113 +25,11 @@ export type NavItemData = {
 const createNavItem = ({ category, name, iconPrefix, packageType, class: className }: CreateNavItemProps) => ({
   name,
   href: generateNavHref(packageType, className),
+  hrefChildren: `/${kebabCaseVietnamese(name)}`,
   icon: `${CONFIG.assetsDir}/assets/icons/apps/${iconPrefix}.png`,
   packageType,
   class: className,
 });
-
-// ----------------------------------------------------------------------
-
-// const foundationNav = ['Colors', 'Typography', 'Shadows', 'Grid', 'Icons'].map((name) =>
-//   createNavItem({ category: 'foundation', name, iconPrefix: 'ic', packageType: 'Foundation' })
-// );
-
-// ----------------------------------------------------------------------
-
-const MUI_X_COMPONENTS = ['Data grid', 'Date pickers', 'Tree view'];
-
-// const muiNav = [
-//   'Chip',
-//   'List',
-//   'Menu',
-//   'Tabs',
-//   'Alert',
-//   'Badge',
-//   'Table',
-//   'Avatar',
-//   'Dialog',
-//   'Rating',
-//   'Slider',
-//   'Switch',
-//   'Drawer',
-//   'Buttons',
-//   'Date pickers',
-//   'Popover',
-//   'Stepper',
-//   'Tooltip',
-//   'Checkbox',
-//   'Progress',
-//   'Timeline',
-//   'Accordion',
-//   'Textfield',
-//   'Data grid',
-//   'Tree view',
-//   'Pagination',
-//   'Breadcrumbs',
-//   'Autocomplete',
-//   'Radio button',
-//   'Transfer list',
-// ].map((name) =>
-//   createNavItem({
-//     category: 'mui',
-//     name,
-//     iconPrefix: 'ic',
-//     packageType: MUI_X_COMPONENTS.includes(name) ? 'MUI X' : 'MUI',
-//   })
-// );
-
-// ----------------------------------------------------------------------
-
-const THIRD_PARTY_COMPONENTS = [
-  'Map',
-  'Chart',
-  'Image',
-  'Editor',
-  'Upload',
-  'Scroll',
-  'Animate',
-  'Carousel',
-  'Lightbox',
-  'Snackbar',
-  'Markdown',
-  'Form wizard',
-  'Multi language',
-  'Form validation',
-  'Scroll progress',
-  'Organization chart',
-];
-
-// const extraNav = [
-//   'Map',
-//   'Dnd',
-//   'Chart',
-//   'Image',
-//   'Label',
-//   'Editor',
-//   'Upload',
-//   'Scroll',
-//   'Layout',
-//   'Animate',
-//   'Carousel',
-//   'Lightbox',
-//   'Snackbar',
-//   'Markdown',
-//   'Mega menu',
-//   'Utilities',
-//   'Multi language',
-//   'Navigation bar',
-//   'Form validation',
-//   'Form wizard',
-//   'Scroll progress',
-//   'Organization chart',
-// ].map((name) =>
-//   createNavItem({
-//     category: 'extra',
-//     name,
-//     iconPrefix: 'ic-extra',
-//     packageType: THIRD_PARTY_COMPONENTS.includes(name) ? '3rd Party' : 'Custom',
-//   })
-// );
 
 const sgkGroupedNav = DanhSachSGK.reduce((acc, curr) => {
   const monHoc = curr['Môn học'];
@@ -160,8 +58,5 @@ const sgkComponents = Object.entries(sgkGroupedNav).map(([title, items]) => ({
 }));
 
 export const allComponents = [
-  // { title: 'Foundation', items: foundationNav },
-  // { title: 'MUI', items: orderBy(muiNav, ['name'], ['asc']) },
-  // { title: 'Extra', items: orderBy(extraNav, ['name'], ['asc']) },
   ...sgkComponents,
 ];

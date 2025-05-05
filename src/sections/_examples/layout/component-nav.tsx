@@ -60,8 +60,6 @@ export function PrimaryNav({ sx, navData, className, ...other }: PrimaryNavProps
       sx={sx}
       {...other}
     >
-      <NavSearch navData={navData} sx={{ mb: 4 }} />
-
       <NavSection>
         <NavUl
           sx={[
@@ -104,6 +102,15 @@ function PrimaryNavList({ subheader, items }: NavListProps) {
     height: 'calc(100% - 12px)',
   };
 
+  const normalizedItems = items.map((item) => ({
+    ...item,
+    ClassOfBook: item.class?.startsWith('Lớp') ? item.class : `Lớp ${item.class || 'Không rõ'}`,
+  }));
+
+  const uniqueItemsByClass = Array.from(
+    new Map(normalizedItems.map((item) => [item.class, item])).values()
+  );
+
   return (
     <NavLi>
       <ListSubheader
@@ -131,14 +138,14 @@ function PrimaryNavList({ subheader, items }: NavListProps) {
           '&::before': borderStyles,
         }}
       >
-        {items.map((item) => (
+        {uniqueItemsByClass.map((item) => (
           <NavLi key={item.name}>
             <NavItem
               href={item.href}
               isActive={isEqualPath(item.href, pathname)}
               autoFocus={isEqualPath(item.href, pathname)}
             >
-              {item.name} {item.packageType === 'MUI X' && <>(MUI X)</>}
+              {item.ClassOfBook} {item.packageType === 'MUI X' && <>(MUI X)</>}
             </NavItem>
           </NavLi>
         ))}

@@ -1,16 +1,13 @@
 import { useState } from 'react';
 
 import Grid from '@mui/material/Grid';
-import Radio from '@mui/material/Radio';
 import Paper from '@mui/material/Paper';
 import { useTheme } from '@mui/material/styles';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 
-import { ComponentLayout } from '../../nhasach/layout/component-layout';
 import { useParams } from 'react-router';
 import { Typography } from '@mui/material';
 import { startCase } from 'es-toolkit';
+import { ComponentLayout } from '../layout';
 
 // ----------------------------------------------------------------------
 

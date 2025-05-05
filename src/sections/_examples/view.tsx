@@ -9,11 +9,12 @@ import Typography from '@mui/material/Typography';
 import { varFade, MotionContainer } from 'src/components/animate';
 
 import { ComponentCard, ComponentLayout } from './layout';
-import { allComponents } from './layout/nav-config-components';
+import { getAllComponents } from './layout/nav-config-components';
 
 // ----------------------------------------------------------------------
 
 export function ComponentsView() {
+  const navData = getAllComponents();
   return (
     <ComponentLayout
       heroProps={{
@@ -36,7 +37,7 @@ export function ComponentsView() {
       }}
     >
       <Stack divider={<Divider sx={{ borderStyle: 'dashed', my: 8 }} />}>
-        {allComponents.map((section) => (
+        {navData.map((section) => (
           <section key={section.title}>
             {renderDescription(section.title as 'Foundation' | 'MUI' | 'Extra')}
             <Box

@@ -10,7 +10,6 @@ import { authRoutes } from './auth';
 import { mainRoutes } from './main';
 import { authDemoRoutes } from './auth-demo';
 import { dashboardRoutes } from './dashboard';
-import { componentsRoutes } from './components';
 import { categoriseRoutes } from './category';
 
 // ----------------------------------------------------------------------
@@ -47,9 +46,6 @@ export const routesSection: RouteObject[] = [
 
   // Main
   ...mainRoutes,
-
-  // Components
-  ...componentsRoutes,
 
   ...categoriseRoutes,
 

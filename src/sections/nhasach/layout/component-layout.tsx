@@ -94,22 +94,6 @@ export function ComponentLayout({
       <SecondaryNav navData={sectionData} activeItem={activeIndex} onClickItem={scrollToSection} />
     );
 
-  const renderHero = () => (
-    <LayoutHero sx={heroProps?.sx}>
-      <Container>
-        {heroProps?.overrideContent ?? (
-          <>
-            <CustomBreadcrumbs
-              {...heroProps}
-              links={[{ name: 'Components', href: paths.components }, { name: heroProps?.heading }]}
-            />
-            {heroProps?.additionalContent}
-          </>
-        )}
-      </Container>
-    </LayoutHero>
-  );
-
   const renderContent = () => (
     <LayoutContainer maxWidth="md" {...containerProps}>
       <NavSearch
@@ -153,7 +137,6 @@ export function ComponentLayout({
   return (
     <>
       {heroProps?.topNode}
-      {/* {renderHero()} */}
       {heroProps?.bottomNode}
 
       <LayoutRoot sx={[cssVars, ...(Array.isArray(sx) ? sx : [sx])]} {...other}>
@@ -201,31 +184,3 @@ const LayoutSection = styled('div')(({ theme }) => ({
   borderRadius: theme.shape.borderRadius * 2,
   backgroundColor: theme.vars.palette.background.neutral,
 }));
-
-const LayoutHero = styled('section')(({ theme }) => {
-  const backgroundStyles: CSSObject = {
-    ...theme.mixins.bgGradient({
-      images: [
-        `linear-gradient(0deg, ${varAlpha(theme.vars.palette.background.defaultChannel, 0.9)}, ${varAlpha(theme.vars.palette.background.defaultChannel, 0.9)})`,
-        `url(${CONFIG.assetsDir}/assets/background/background-3-blur.webp)`,
-      ],
-    }),
-    top: 0,
-    left: 0,
-    zIndex: -1,
-    content: "''",
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-    transform: 'scaleX(-1)',
-  };
-
-  return {
-    minHeight: 240,
-    display: 'flex',
-    position: 'relative',
-    alignItems: 'center',
-    padding: theme.spacing(5, 0),
-    '&::before': backgroundStyles,
-  };
-});

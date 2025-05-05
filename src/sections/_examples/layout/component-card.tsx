@@ -24,7 +24,7 @@ export function ComponentCard({ item, sx, ...other }: ComponentCardProps) {
   return (
     <Box
       component={RouterLink}
-      href={item.href}
+      href={item.hrefChildren}
       sx={[
         (theme) => ({
           color: 'inherit',

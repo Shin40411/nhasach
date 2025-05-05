@@ -81,19 +81,35 @@ export function HomeHugePackElements({ sx, ...other }: BoxProps) {
     <Box
       component="section"
       sx={[
-        () => ({
-          // pt: 10,
+        {
           position: 'relative',
-          // backgroundColor: 'rgb(33, 43, 54)'
-        }),
+          backgroundImage: `url(${CONFIG.assetsDir}/assets/background/carouselbg.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          overflow: 'hidden',
+        },
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}
       {...other}
     >
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: `url(${CONFIG.assetsDir}/assets/background/whitewall.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.5,
+          zIndex: 0,
+          pointerEvents: 'none',
+        }}
+      />
       <MotionViewport>
         {renderLines()}
 
-        <Container sx={{ textAlign: { xs: 'center', md: 'left' }, height: '100%' }}>
+        <Container sx={{ position: 'relative', zIndex: 1, textAlign: { xs: 'center', md: 'left' }, height: '100%' }}>
           <Grid container rowSpacing={{ xs: 3, md: 0 }} columnSpacing={{ xs: 0, md: 8 }}>
             <Grid sx={{ display: 'flex', alignItems: 'stretch' }} size={{ xs: 12, md: 6, lg: 7 }}>
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '100%', height: '100%', py: 4 }}>
@@ -141,8 +157,6 @@ export function HomeHugePackElements({ sx, ...other }: BoxProps) {
             </Grid>
 
             <Grid size={{ xs: 12, md: 6, lg: 5 }}>
-              {/* <m.div variants={varFade('inUp', { distance: 24 })}> */}
-              {/* {renderImage()} */}
               <Box sx={{ position: 'relative' }}>
                 <CarouselArrowFloatButtons {...carousel.arrows} options={carousel.options} />
 
