@@ -21,7 +21,7 @@ import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 
 import { componentLayoutClasses } from './classes';
 import { useScroll, useHashScroll } from './hooks';
-import { allComponents } from './nav-config-components';
+import { allComponents, NavItemData } from './nav-config-components';
 import { PrimaryNav, SecondaryNav } from './component-nav';
 import { NavSearch } from './component-search';
 
@@ -34,7 +34,7 @@ type ComponentLayoutProps = React.ComponentProps<typeof LayoutRoot> & {
   sectionData?: {
     name: string;
     description?: React.ReactNode;
-    component: React.ReactNode;
+    component?: React.ReactNode;
   }[];
   heroProps?: CustomBreadcrumbsProps & {
     overrideContent?: React.ReactNode;
@@ -89,18 +89,14 @@ export function ComponentLayout({
 
   const renderPrimaryNav = () => <PrimaryNav navData={allComponents} />;
 
-  const renderSecondaryNav = () =>
-    !!sectionData?.length && (
-      <SecondaryNav navData={sectionData} activeItem={activeIndex} onClickItem={scrollToSection} />
-    );
-
+  // const renderSecondaryNav = () =>
+  //   !!sectionData?.length && (
+  //     <SecondaryNav navData={sectionData} activeItem={activeIndex} onClickItem={scrollToSection} />
+  //   );
   const renderContent = () => (
     <LayoutContainer maxWidth="md" {...containerProps}>
       <NavSearch
-        navData={sectionData?.map((section) => ({
-          title: section.name,
-          items: [],
-        }))}
+        navData={allComponents}
         sx={{ mb: 4 }}
       />
       {children ?? (
@@ -142,7 +138,7 @@ export function ComponentLayout({
       <LayoutRoot sx={[cssVars, ...(Array.isArray(sx) ? sx : [sx])]} {...other}>
         {renderPrimaryNav()}
         {renderContent()}
-        {renderSecondaryNav()}
+        {/* {renderSecondaryNav()} */}
       </LayoutRoot>
     </>
   );

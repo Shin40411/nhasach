@@ -107,6 +107,7 @@ export function CategoryBook() {
                     </section>
                 </Stack>
             ),
+            valuesComponent: items
         }
     ];
 

@@ -53,7 +53,7 @@ export function NavList({ data, sx, ...other }: NavListProps) {
   const renderDropdown = () =>
     !!data.children && (
       <NavDropdown open={open} onMouseEnter={handleOpenMenu} onMouseLeave={onClose}>
-        <Nav>
+        <Nav sx={{ pb: 4, px: 4 }}>
           <NavUl sx={{ gap: 3, flexDirection: 'row' }}>
             {data.children.map((list) => (
               <NavSubList key={list.subheader} subheader={list.subheader} data={list.items} />

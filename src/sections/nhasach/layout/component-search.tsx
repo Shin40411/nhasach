@@ -1,6 +1,6 @@
 import type { Theme, SxProps } from '@mui/material/styles';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import { isEqualPath } from 'minimal-shared/utils';
@@ -33,12 +33,15 @@ type NavSearchProps = {
 export function NavSearch({ navData = [], sx }: NavSearchProps) {
   const router = useRouter();
   const pathname = usePathname();
-
   const options = navData?.map((section) => section.items).flat();
   const activeOption = options?.find((opt) => isEqualPath(opt.href, pathname));
-
+  const [open, setOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedItem, setSelectedItem] = useState<NavItemData | null>(activeOption || null);
+
+  useEffect(() => {
+    setOpen(searchQuery.trim().length > 0);
+  }, [searchQuery]);
 
   const handleChange = useCallback(
     (item: NavItemData | null) => {
@@ -73,9 +76,11 @@ export function NavSearch({ navData = [], sx }: NavSearchProps) {
 
   return (
     <Autocomplete
+      open={open}
       sx={sx}
       autoHighlight
       disableClearable
+      autoComplete={false}
       popupIcon={null}
       options={options}
       value={selectedItem as NavItemData}

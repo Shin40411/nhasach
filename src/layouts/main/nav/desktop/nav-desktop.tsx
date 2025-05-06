@@ -10,7 +10,6 @@ export function NavDesktop({ data, sx, ...other }: NavMainProps) {
     <Nav
       sx={[
         () => ({
-          /* Put styles */
         }),
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}

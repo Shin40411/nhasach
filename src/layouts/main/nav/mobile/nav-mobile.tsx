@@ -84,7 +84,7 @@ export function NavMobile({ data, open, onClose, slots, sx }: NavMobileProps) {
         </Nav>
       </Scrollbar>
 
-      {slots?.bottomArea ?? (
+      {/* {slots?.bottomArea ?? (
         <Box
           sx={{
             py: 3,
@@ -105,7 +105,7 @@ export function NavMobile({ data, open, onClose, slots, sx }: NavMobileProps) {
             Purchase
           </Button>
         </Box>
-      )}
+      )} */}
     </Drawer>
   );
 }

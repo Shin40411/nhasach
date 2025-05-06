@@ -5,38 +5,37 @@ import { CONFIG } from 'src/global-config';
 import { Iconify } from 'src/components/iconify';
 
 import type { NavMainProps } from './main/nav/types';
-
+import { getAllComponents } from 'src/sections/_examples/layout';
+import { NavItemData } from 'src/sections/nhasach/layout';
 // ----------------------------------------------------------------------
 
 export const navData: NavMainProps['data'] = [
   // { title: 'Home', path: '/', icon: <Iconify width={22} icon="solar:home-angle-bold-duotone" /> },
   {
-    title: 'Sản phẩm',
-    path: '/',
+    title: 'Danh mục',
+    path: '/danh-muc',
     icon: <Iconify width={22} icon="solar:atom-bold-duotone" />,
-  },
-  // {
-  //   title: 'Về chúng tôi',
-  //   path: paths.about,
-  //   icon: <Iconify width={22} icon="solar:atom-bold-duotone" />,
-  // },
-  // {
-  //   title: 'Pages',
-  //   path: '/pages',
-  //   icon: <Iconify width={22} icon="solar:file-bold-duotone" />,
-  //   children: [
-  // {
-  //   subheader: 'Other',
-  //   items: [
-  // { title: 'About us', path: paths.about },
-  // { title: 'Contact us', path: paths.contact },
-  // { title: 'FAQs', path: paths.faqs },
-  // { title: 'Pricing', path: paths.pricing },
-  // { title: 'Payment', path: paths.payment },
-  // { title: 'Maintenance', path: paths.maintenance },
-  // { title: 'Coming soon', path: paths.comingSoon },
-  //   ],
-  // },
+    children: getAllComponents().map((section) => {
+      const uniqueClasses = new Map<string, NavItemData>();
+
+      section.items.forEach((item) => {
+        if (!uniqueClasses.has(item.class)) {
+          uniqueClasses.set(item.class, item);
+        }
+      });
+
+      return {
+        subheader: section.title,
+        items: Array.from(uniqueClasses.values()).map((item) => {
+          const className = item.class.startsWith('Lớp') ? item.class : `Lớp ${item.class}`;
+          return {
+            title: className,
+            path: item.href,
+          };
+        }),
+      };
+    }),
+  }
   // {
   //   subheader: 'Concepts',
   //   items: [

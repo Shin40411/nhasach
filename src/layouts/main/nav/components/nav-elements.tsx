@@ -30,4 +30,4 @@ type NavUlProps = React.ComponentProps<'ul'>;
 
 export const NavUl = styled((props: NavUlProps) => (
   <ul {...props} className={mergeClasses([navSectionClasses.ul, props.className])} />
-))(() => ({ display: 'flex', flexDirection: 'column' }));
+))(() => ({ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', pb: 4 }));

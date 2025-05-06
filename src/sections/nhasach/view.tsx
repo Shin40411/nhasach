@@ -9,9 +9,10 @@ import Typography from '@mui/material/Typography';
 import { varFade, MotionContainer } from 'src/components/animate';
 
 import { ComponentCard, ComponentLayout } from './layout';
-import { allComponents } from './layout/nav-config-components';
+import { allComponents, NavItemData } from './layout/nav-config-components';
 
 // ----------------------------------------------------------------------
+
 
 export function NhaSachView() {
   return (
