@@ -1,56 +1,118 @@
-import { useState } from 'react';
-
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import { useTheme } from '@mui/material/styles';
+import { SxProps, useTheme } from '@mui/material/styles';
 
 import { useParams } from 'react-router';
-import { Typography } from '@mui/material';
-import { startCase } from 'es-toolkit';
-import { ComponentLayout } from '../layout';
+import { Box, Button, Container, Divider, Stack, Theme, Typography } from '@mui/material';
+import { ComponentCard, ComponentLayout } from '../layout';
+import { EmptyContent } from 'src/components/empty-content';
+import { RouterLink } from 'src/routes/components';
+import { paths } from 'src/routes/paths';
+import { Iconify } from 'src/components/iconify';
+import { allComponents } from 'src/sections/nhasach/layout';
+import { kebabCaseVietnamese } from 'src/utils/kebabVN';
 
-// ----------------------------------------------------------------------
-
-const LABELS = ['1col', '2col', '3col', '4col', '6col', '12col'];
-
-// ----------------------------------------------------------------------
+const containerStyles: SxProps<Theme> = {
+    mt: 5,
+    mb: 10,
+};
 
 export function CategoryBook() {
-    const theme = useTheme();
     const { packageType, className } = useParams();
-    const [column, setColumn] = useState<number>(3);
-    const [spacing, setSpacing] = useState<number>(2);
 
-    const handleChangeSpacing = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSpacing(Number(event.target.value));
+
+    if (!packageType || !className) {
+        return (
+            <Container sx={containerStyles}>
+                <EmptyContent
+                    filled
+                    title="Không tìm thấy sản phẩm!"
+                    action={
+                        <Button
+                            component={RouterLink}
+                            href='/'
+                            startIcon={<Iconify width={16} icon="eva:arrow-ios-back-fill" />}
+                            sx={{ mt: 3 }}
+                        >
+                            Về trang chủ
+                        </Button>
+                    }
+                    sx={{ py: 10 }}
+                />
+            </Container>
+        );
+    }
+
+    const group = allComponents.find(
+        (comp) => kebabCaseVietnamese(comp.title) === packageType
+    );
+
+    const titleSubject = group?.title || '';
+    const gradeList = className.split('-'); // e.g. ["10", "11"]
+
+    const normalizeClassList = (value: string) => {
+        return value
+            .split(',')
+            .map((v) => v.replace('Lớp', '').trim());
     };
 
-    const handleChangeColumn = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setColumn(Number(event.target.value));
-    };
+    const items = group?.items.filter((item) => {
+        const itemGrades = normalizeClassList(item.class);
+        return itemGrades.some((g) => gradeList.includes(g));
+    }) || [];
 
-    const DEMO_COMPONENTS = [
+    if (items.length === 0) {
+        return (
+            <Container sx={containerStyles}>
+                <EmptyContent
+                    filled
+                    title="Không tìm thấy sản phẩm!"
+                    action={
+                        <Button
+                            component={RouterLink}
+                            href='/'
+                            startIcon={<Iconify width={16} icon="eva:arrow-ios-back-fill" />}
+                            sx={{ mt: 3 }}
+                        >
+                            Về trang chủ
+                        </Button>
+                    }
+                    sx={{ py: 10 }}
+                />
+            </Container>
+        );
+    }
+
+    const Category_Components = [
         {
-            name: `${startCase(packageType || '')} - Lớp ${className}` || '',
+            name: `${titleSubject} - Lớp ${className}` || '',
             component: (
-                    <Grid container spacing={spacing} sx={{ width: 1 }}>
-                        <Typography variant="h5" sx={{ mb: 2 }} content={packageType} />
-                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((value) => (
-                            <Grid key={value} size={{ xs: 1 }}>
-                                <Paper sx={{ height: 80, boxShadow: theme.vars.customShadows.z8 }} />
-                            </Grid>
-                        ))}
-                    </Grid>
+                <Stack divider={<Divider sx={{ borderStyle: 'dashed', my: 8 }} />}>
+                    <section key={packageType}>
+                        <Box
+                            sx={{
+                                rowGap: 3,
+                                columnGap: 2.5,
+                                display: 'grid',
+                                gridTemplateColumns: {
+                                    xs: 'repeat(2, 1fr)',
+                                    sm: 'repeat(3, 1fr)',
+                                    md: 'repeat(4, 1fr)',
+                                    lg: 'repeat(5, 1fr)',
+                                },
+                            }}
+                        >
+                            {items.map((item) => (
+                                <ComponentCard key={item.name} item={item} />
+                            ))}
+                        </Box>
+                    </section>
+                </Stack>
             ),
         }
     ];
 
     return (
         <ComponentLayout
-            sectionData={DEMO_COMPONENTS}
-            heroProps={{
-                heading: 'Grid',
-            }}
+            sectionData={Category_Components}
         />
     );
 }

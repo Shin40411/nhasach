@@ -17,6 +17,7 @@ const PricingPage = lazy(() => import('src/pages/pricing'));
 const PaymentPage = lazy(() => import('src/pages/payment'));
 const ComingSoonPage = lazy(() => import('src/pages/coming-soon'));
 const MaintenancePage = lazy(() => import('src/pages/maintenance'));
+const ChiTietSachPage = lazy(() => import('src/pages/bookdetail/details'));
 // Product
 const ProductListPage = lazy(() => import('src/pages/product/list'));
 const ProductDetailsPage = lazy(() => import('src/pages/product/details'));
@@ -52,6 +53,9 @@ export const mainRoutes: RouteObject[] = [
           // { path: 'contact-us', element: <ContactPage /> },
           { path: 'faqs', element: <FaqsPage /> },
           // { path: 'blank', element: <BlankPage /> },
+          {
+            path: ':idBook/:name', element: <ChiTietSachPage />,
+          },
           {
             path: 'product',
             children: [

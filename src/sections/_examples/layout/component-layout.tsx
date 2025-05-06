@@ -144,7 +144,7 @@ export function ComponentLayout({
       <LayoutRoot sx={[cssVars, ...(Array.isArray(sx) ? sx : [sx])]} {...other}>
         {renderPrimaryNav()}
         {renderContent()}
-        {renderSecondaryNav()}
+        {/* {renderSecondaryNav()} */}
       </LayoutRoot>
     </>
   );

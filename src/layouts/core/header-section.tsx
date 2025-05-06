@@ -54,8 +54,8 @@ export function HeaderSection({
       (theme) => ({
         ...(isOffset && {
         '--color': `var(--offset-color, ${theme.vars.palette.text.primary})`,
-        }),
-        backgroundColor: '#fde67c',
+      }),
+      backgroundColor: '#fde67c',
         // color: '#fff',
       }),
       ...(Array.isArray(sx) ? sx : [sx]),

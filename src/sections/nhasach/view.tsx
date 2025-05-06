@@ -19,6 +19,7 @@ export function NhaSachView() {
       heroProps={{
         sx: { py: 15 },
       }}
+      id='nhasach'
     >
       <Stack divider={<Divider sx={{ borderStyle: 'dashed', my: 8 }} />}>
         {allComponents.map((section) => (

@@ -1,8 +1,9 @@
 import { CONFIG } from 'src/global-config';
 
-import DanhSachSGK from '../../../_mock/_map/DanhSachSGK.json';
+// import DanhSachSGK from '../../../_mock/_map/DanhSachSGK.json';
 import { generateNavHref } from 'src/sections/_examples/layout/href-generated';
 import { kebabCaseVietnamese } from 'src/utils/kebabVN';
+import { BOOKS } from 'src/actions/book';
 // ----------------------------------------------------------------------
 
 type CreateNavItemProps = {
@@ -11,6 +12,7 @@ type CreateNavItemProps = {
   iconPrefix: 'ic' | 'ic-extra' | 'ic-blog' | 'sgk';
   category: 'foundation' | 'mui' | 'extra' | 'sgk';
   class: string;
+  idBook?: string;
 };
 
 export type NavItemData = {
@@ -22,30 +24,30 @@ export type NavItemData = {
   class: string;
 };
 
-const createNavItem = ({ category, name, iconPrefix, packageType, class: className }: CreateNavItemProps) => ({
+const createNavItem = ({ category, name, iconPrefix, packageType, class: className, idBook }: CreateNavItemProps) => ({
   name,
   href: generateNavHref(packageType, className),
-  hrefChildren: `/${kebabCaseVietnamese(name)}`,
+  hrefChildren: `/${idBook}/${kebabCaseVietnamese(name)}`,
   icon: `${CONFIG.assetsDir}/assets/icons/apps/${iconPrefix}.png`,
   packageType,
   class: className,
 });
 
-const sgkGroupedNav = DanhSachSGK.reduce((acc, curr) => {
-  const monHoc = curr['Môn học'];
-  const tenSach = curr['Tên sách'];
-  const lop = curr['Lớp'];
-  if (!acc[monHoc]) {
-    acc[monHoc] = [];
+const sgkGroupedNav = BOOKS.reduce((acc, book) => {
+  const { subject, title, grade, id } = book;
+
+  if (!acc[subject]) {
+    acc[subject] = [];
   }
 
-  acc[monHoc].push(
+  acc[subject].push(
     createNavItem({
       category: 'sgk',
-      name: tenSach,
+      name: title,
       iconPrefix: 'sgk',
-      packageType: monHoc,
-      class: lop,
+      packageType: subject,
+      class: grade,
+      idBook: id
     })
   );
 

@@ -12,14 +12,14 @@ export const navData: NavMainProps['data'] = [
   // { title: 'Home', path: '/', icon: <Iconify width={22} icon="solar:home-angle-bold-duotone" /> },
   {
     title: 'Sản phẩm',
-    path: paths.product.root,
+    path: '/',
     icon: <Iconify width={22} icon="solar:atom-bold-duotone" />,
   },
-  {
-    title: 'Về chúng tôi',
-    path: paths.about,
-    icon: <Iconify width={22} icon="solar:atom-bold-duotone" />,
-  },
+  // {
+  //   title: 'Về chúng tôi',
+  //   path: paths.about,
+  //   icon: <Iconify width={22} icon="solar:atom-bold-duotone" />,
+  // },
   // {
   //   title: 'Pages',
   //   path: '/pages',
