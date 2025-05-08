@@ -10,7 +10,7 @@ import { NavItemData } from 'src/sections/nhasach/layout';
 // ----------------------------------------------------------------------
 
 export const navData: NavMainProps['data'] = [
-  // { title: 'Home', path: '/', icon: <Iconify width={22} icon="solar:home-angle-bold-duotone" /> },
+  { title: 'Trang chủ', path: '/', icon: <Iconify width={22} icon="solar:home-angle-bold-duotone" /> },
   {
     title: 'Danh mục',
     path: '/danh-muc',

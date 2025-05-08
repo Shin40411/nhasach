@@ -99,7 +99,7 @@ export function ComponentLayout({
     );
 
   const renderContent = () => (
-    <LayoutContainer maxWidth="md" {...containerProps}>
+    <LayoutContainer maxWidth="lg" {...containerProps}>
       <NavSearch
         navData={sectionData
           ?.map((section) => ({
@@ -115,7 +115,7 @@ export function ComponentLayout({
             const hashId = `${kebabCase(section.name)}`;
 
             return (
-              <Card key={section.name} id={hashId} className={queryClassName}>
+              <Card key={section.name} id={hashId} sx={{boxShadow: 'none'}} className={queryClassName}>
                 <CardHeader
                   title={section.name}
                   subheader={section.description}
@@ -188,5 +188,5 @@ const LayoutSection = styled('div')(({ theme }) => ({
   gap: 'var(--section-gap)',
   padding: 'var(--section-padding)',
   borderRadius: theme.shape.borderRadius * 2,
-  backgroundColor: theme.vars.palette.background.neutral,
+  // backgroundColor: theme.vars.palette.background.neutral,
 }));

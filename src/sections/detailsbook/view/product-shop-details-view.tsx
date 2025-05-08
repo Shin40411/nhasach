@@ -26,6 +26,8 @@ import { ProductDetailsCarousel } from '../product-details-carousel';
 import { ProductDetailsDescription } from '../product-details-description';
 import { IBookItem } from 'src/types/book';
 import { CONFIG } from 'src/global-config';
+import { kebabCaseUnQuoteVn } from 'src/utils/kebabVN';
+import { getInitials } from 'src/utils/getInitials';
 
 // ----------------------------------------------------------------------
 
@@ -68,10 +70,30 @@ export function ProductShopDetailsView({ product, error, loading }: Props) {
   Thuộc: ${product?.grade} <br />
   Bộ môn: ${product?.subject}`;
 
+  let gradeComponent = '';
+  let gradeExplodeComponent = '';
+  if (product?.grade.includes('Lớp ', 0)) {
+    gradeComponent = product?.grade;
+    gradeExplodeComponent = product?.grade.replace('Lớp ', '').split(', ').join('');;
+  } else {
+    gradeComponent = `Lớp ${product?.grade}`;
+    gradeExplodeComponent = (product?.grade || '').split(', ').join('');
+  }
+
+  let subjectComponent = '';
+  if (product?.subject) {
+    subjectComponent = getInitials(product?.subject);
+  }
+
+  let titleComponent = '';
+  if (product?.subject) {
+    titleComponent = kebabCaseUnQuoteVn(product.title.replace('.', ''));
+  }
+
+  const bookDirConfig = `${gradeComponent}/thumbnail_stk${gradeExplodeComponent}_${subjectComponent}${gradeExplodeComponent}_${titleComponent}.png`;
+
   const thumbnailBook: string[] = [
-    `${CONFIG.assetsDir}/assets/images/databook/ngữ-văn.jpg`,
-    `${CONFIG.assetsDir}/assets/images/databook/tiếng-anh.jpg`,
-    `${CONFIG.assetsDir}/assets/images/databook/toán-học.jpg`
+    `${CONFIG.assetsDir}/assets/Thumbnail/${bookDirConfig}`
   ];
   const tabs = useTabs('description');
 
@@ -127,6 +149,28 @@ export function ProductShopDetailsView({ product, error, loading }: Props) {
             // items={checkoutState.items}
             />
           )}
+          <Box sx={{ my: 4 }}>
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{
+              backgroundColor: '#1976d2',
+              color: '#fff',
+              textTransform: 'none',
+              fontWeight: 'bold',
+              fontSize: '16px',
+              padding: '10px 20px',
+              borderRadius: '8px',
+              '&:hover': {
+                backgroundColor: '#1565c0',
+              },
+              }}
+              onClick={() => window.location.href = 'tel:0942580848'}
+              startIcon={<Iconify icon="solar:phone-bold" />}
+            >
+              Liên hệ ngay
+            </Button>
+          </Box>
         </Grid>
       </Grid>
       <Box
@@ -137,19 +181,6 @@ export function ProductShopDetailsView({ product, error, loading }: Props) {
           gridTemplateColumns: { xs: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' },
         }}
       >
-        {/* {SUMMARY.map((item) => (
-          <Box key={item.title} sx={{ textAlign: 'center', px: 5 }}>
-            <Iconify icon={item.icon} width={32} sx={{ color: 'primary.main' }} />
-
-            <Typography variant="subtitle1" sx={{ mb: 1, mt: 2 }}>
-              {item.title}
-            </Typography>
-
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {item.description}
-            </Typography>
-          </Box>
-        ))} */}
       </Box>
 
       <Card>

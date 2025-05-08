@@ -9,3 +9,12 @@ export function kebabCaseVietnamese(str: string): string {
 
     return kebabCase(noAccents);
 }
+
+export function kebabCaseUnQuoteVn(str: string): string {
+    return str
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/đ/g, "d")
+        .replace(/[^a-z0-9]/g, "");
+}

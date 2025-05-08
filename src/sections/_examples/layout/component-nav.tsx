@@ -12,6 +12,7 @@ import { NavItem } from './component-nav-item';
 import { componentLayoutClasses } from './classes';
 
 import type { NavItemData } from './nav-config-components';
+import { Link } from 'react-router';
 
 // ----------------------------------------------------------------------
 
@@ -140,13 +141,14 @@ function PrimaryNavList({ subheader, items }: NavListProps) {
       >
         {uniqueItemsByClass.map((item) => (
           <NavLi key={item.name}>
-            <NavItem
-              href={item.href}
-              isActive={isEqualPath(item.href, pathname)}
-              autoFocus={isEqualPath(item.href, pathname)}
-            >
-              {item.ClassOfBook} {item.packageType === 'MUI X' && <>(MUI X)</>}
-            </NavItem>
+            <Link to={item.href} style={{ textDecoration: 'none' }}>
+              <NavItem
+                isActive={isEqualPath(item.href, pathname)}
+                autoFocus={isEqualPath(item.href, pathname)}
+              >
+                {item.ClassOfBook} {item.packageType === 'MUI X' && <>(MUI X)</>}
+              </NavItem>
+            </Link>
           </NavLi>
         ))}
       </NavUl>

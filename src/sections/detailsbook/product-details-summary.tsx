@@ -67,10 +67,11 @@ export function ProductDetailsSummary({
 
   const { watch, control, setValue, handleSubmit } = methods;
 
-  const descriptions = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+  const descriptions = `Khám phá kho tàng tri thức và cảm hứng bất tận qua từng trang sách.
+Mỗi cuốn sách là một cánh cửa mở ra thế giới mới — từ kiến thức chuyên môn, kỹ năng sống đến những câu chuyện đầy cảm xúc. Dù là hành trình tìm kiếm tri thức, thư giãn tinh thần hay mở rộng góc nhìn, sách luôn là người bạn đồng hành đáng tin cậy. Một lựa chọn phù hợp sẽ mang đến trải nghiệm đáng giá cho mọi lứa tuổi và sở thích.`;
 
   const renderSubDescription = () => (
-    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+    <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'justify' }}>
       {descriptions}
     </Typography>
   );

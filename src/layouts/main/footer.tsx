@@ -23,7 +23,7 @@ const LINKS = [
   {
     headline: 'This Book',
     children: [
-      { name: 'Về chúng tôi', href: paths.about },
+      { name: 'Về chúng tôi', href: '/' },
       // { name: 'Contact us', href: paths.contact },
       // { name: 'FAQs', href: paths.faqs },
     ],

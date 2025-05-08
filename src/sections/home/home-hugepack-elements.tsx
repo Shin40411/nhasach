@@ -29,6 +29,8 @@ import { Image } from 'src/components/image';
 import { Carousel, CarouselArrowFloatButtons, useCarousel } from 'src/components/carousel';
 import DanhSachSGK from '../../_mock/_map/DanhSachSGK.json';
 import { kebabCase } from 'es-toolkit';
+import { kebabCaseUnQuoteVn } from 'src/utils/kebabVN';
+import { getInitials } from 'src/utils/getInitials';
 // ----------------------------------------------------------------------
 
 type MemberCardProps = {
@@ -42,8 +44,30 @@ type BookItem = {
   "Tác giả": string;
 };
 
-const thumbnailBook = (type: string) => {
-  return `${CONFIG.assetsDir}/assets/images/databook/${kebabCase(type)}.jpg`;
+const thumbnailBook = (ten: string, mon: string, lop: string) => {
+  let titleComponent = '';
+  if (ten) {
+    titleComponent = kebabCaseUnQuoteVn(ten.replace('.', ''));
+  }
+
+  let subjectComponent = '';
+  if (mon) {
+    subjectComponent = getInitials(mon);
+  }
+
+  let gradeComponent = '';
+  let gradeExplodeComponent = '';
+  if (lop.includes('Lớp ', 0)) {
+    gradeComponent = lop;
+    gradeExplodeComponent = lop.replace('Lớp ', '').split(', ').join('');;
+  } else {
+    gradeComponent = `Lớp ${lop}`;
+    gradeExplodeComponent = lop.split(', ').join('');
+  }
+
+  const BookDir = `${gradeComponent}/thumbnail_stk${gradeExplodeComponent}_${subjectComponent}${gradeExplodeComponent}_${titleComponent}.png`;
+
+  return `${CONFIG.assetsDir}/assets/Thumbnail/${BookDir}`;
 };
 
 const renderLines = () => (
@@ -73,9 +97,6 @@ export function HomeHugePackElements({ sx, ...other }: BoxProps) {
 
   const selectedSubjects = ['Tiếng Anh', 'Ngữ Văn', 'Toán học'];
   const uniqueBooks: BookItem[] = selectedSubjects.map((subject) => DanhSachSGK.find((item) => item['Môn học'] === subject)).filter((item): item is BookItem => Boolean(item));
-
-  // const toanHocBooks = DanhSachSGK.filter((item) => item['Môn học'] === 'Toán Học');
-  // console.log('Sách môn Toán Học:', toanHocBooks);
 
   return (
     <Box
@@ -127,9 +148,11 @@ export function HomeHugePackElements({ sx, ...other }: BoxProps) {
                 <m.div variants={varFade('inUp', { distance: 24 })}>
                   <Box
                     sx={{
+                      mt: 3,
                       display: 'flex',
                       justifyContent: 'center',
                       alignItems: 'center',
+                      flexWrap: 'wrap',
                       gap: 3,
                       width: '100%',
                     }}
@@ -174,7 +197,7 @@ export function HomeHugePackElements({ sx, ...other }: BoxProps) {
                             id: item["Môn học"],
                             name: item['Tên sách'],
                             role: item['Lớp'],
-                            avatarUrl: thumbnailBook(item["Môn học"]),
+                            avatarUrl: thumbnailBook(item['Tên sách'], item["Môn học"], item["Lớp"]),
                           }}
                         />
                       </Box>
