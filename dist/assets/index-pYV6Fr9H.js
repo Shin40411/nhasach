@@ -1,0 +1,1 @@
+import{j as t,x as a}from"./index-D6bpUwKX.js";import{B as e}from"./view-VhHB33la.js";const s={title:`Item params | Dashboard - ${a.appName}`};function m(){return t.jsxs(t.Fragment,{children:[t.jsx("title",{children:s.title}),t.jsx(e,{title:"Item active has params"})]})}export{m as default};
