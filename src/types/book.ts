@@ -10,4 +10,5 @@ export type IBookItem = {
     subject: string;
     grade: string;
     author: string;
+    price: string;
 };

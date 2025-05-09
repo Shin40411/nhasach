@@ -1,29 +1,24 @@
 import type { CheckoutContextValue } from 'src/types/checkout';
 
-import { useCallback } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Rating from '@mui/material/Rating';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
-import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import Link, { linkClasses } from '@mui/material/Link';
-import { formHelperTextClasses } from '@mui/material/FormHelperText';
 
-import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
 
-import { fCurrency, fShortenNumber } from 'src/utils/format-number';
+import { formatCurrencyVND, fShortenNumber } from 'src/utils/format-number';
 
-import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
-import { Form, Field } from 'src/components/hook-form';
-import { ColorPicker } from 'src/components/color-utils';
+import { Form } from 'src/components/hook-form';
 import { NumberInput } from 'src/components/number-input';
 import { IBookItem } from 'src/types/book';
+import { useCallback } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -32,6 +27,7 @@ type Props = {
   disableActions?: boolean;
   items?: CheckoutContextValue['state']['items'];
   onAddToCart?: CheckoutContextValue['onAddToCart'];
+  coverUrl?: string;
 };
 
 export function ProductDetailsSummary({
@@ -39,6 +35,7 @@ export function ProductDetailsSummary({
   product,
   onAddToCart,
   disableActions,
+  coverUrl,
   ...other
 }: Props) {
   const router = useRouter();
@@ -49,6 +46,7 @@ export function ProductDetailsSummary({
     subject,
     author,
     grade,
+    price
   } = product;
 
   const existProduct = !!items?.length && items.map((item) => item.id).includes(id);
@@ -59,6 +57,7 @@ export function ProductDetailsSummary({
     subject,
     author,
     grade,
+    price
   };
 
   const methods = useForm<typeof defaultValues>({
@@ -66,9 +65,12 @@ export function ProductDetailsSummary({
   });
 
   const { watch, control, setValue, handleSubmit } = methods;
+  const values = watch();
 
   const descriptions = `Khám phá kho tàng tri thức và cảm hứng bất tận qua từng trang sách.
-Mỗi cuốn sách là một cánh cửa mở ra thế giới mới — từ kiến thức chuyên môn, kỹ năng sống đến những câu chuyện đầy cảm xúc. Dù là hành trình tìm kiếm tri thức, thư giãn tinh thần hay mở rộng góc nhìn, sách luôn là người bạn đồng hành đáng tin cậy. Một lựa chọn phù hợp sẽ mang đến trải nghiệm đáng giá cho mọi lứa tuổi và sở thích.`;
+  Mỗi cuốn sách là một cánh cửa mở ra thế giới mới — từ kiến thức chuyên môn, kỹ năng sống đến những câu chuyện đầy cảm xúc. 
+  Dù là hành trình tìm kiếm tri thức, thư giãn tinh thần hay mở rộng góc nhìn, sách luôn là người bạn đồng hành đáng tin cậy. 
+  Một lựa chọn phù hợp sẽ mang đến trải nghiệm đáng giá cho mọi lứa tuổi và sở thích.`;
 
   const renderSubDescription = () => (
     <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'justify' }}>
@@ -90,33 +92,112 @@ Mỗi cuốn sách là một cánh cửa mở ra thế giới mới — từ ki�
     </Box>
   );
 
-  // const renderLabels = () =>
-  //   (newLabel.enabled || saleLabel.enabled) && (
-  //     <Box sx={{ gap: 1, display: 'flex', alignItems: 'center' }}>
-  //       {newLabel.enabled && <Label color="info">{newLabel.content}</Label>}
-  //       {saleLabel.enabled && <Label color="error">{saleLabel.content}</Label>}
-  //     </Box>
-  //   );
+  const renderShare = () => (
+    <Box
+      sx={{
+        gap: 3,
+        display: 'flex',
+        justifyContent: 'center',
+        [`& .${linkClasses.root}`]: {
+          gap: 1,
+          alignItems: 'center',
+          display: 'inline-flex',
+          color: 'text.secondary',
+          typography: 'subtitle2',
+        },
+      }}
+    >
+      <Link>
+        <Iconify icon="solar:share-bold" width={16} />
+        Chia sẻ
+      </Link>
+    </Box>
+  );
 
-  // const renderInventoryType = () => (
-  //   <Box
-  //     component="span"
-  //     sx={{
-  //       typography: 'overline',
-  //       color:
-  //         (inventoryType === 'out of stock' && 'error.main') ||
-  //         (inventoryType === 'low stock' && 'warning.main') ||
-  //         'success.main',
-  //     }}
-  //   >
-  //     {inventoryType}
-  //   </Box>
-  // );
+  const renderQuantity = () => (
+    <Box sx={{ display: 'flex' }}>
+      <Typography variant="subtitle2" sx={{ flexGrow: 1 }}>
+        Số lượng
+      </Typography>
+
+      <Stack spacing={1}>
+        <NumberInput
+          hideDivider
+          value={1}
+          // onChange={(event, quantity: number) => setValue('quantity', quantity)}
+          max={100}
+          sx={{ maxWidth: 112 }}
+        />
+      </Stack>
+    </Box>
+  );
+
+  const handleAddCart = useCallback(() => {
+    try {
+      onAddToCart?.({
+        ...values,
+        subtotal: Number(values.price),
+        price: Number(values.price),
+        name: values.title,
+        size: values.subject,
+        coverUrl: coverUrl || '',
+        colors: [values.grade],
+        quantity: 1,
+        available: 1
+      });
+      console.log(values.grade);
+    } catch (error) {
+      console.error(error);
+    }
+  }, [onAddToCart, values]);
+
+  const renderActions = () => (
+    <Box sx={{ gap: 2, display: 'flex' }}>
+      <Button
+        fullWidth
+        size="large"
+        color="warning"
+        variant="contained"
+        onClick={handleAddCart}
+        startIcon={<Iconify icon="solar:cart-plus-bold" width={24} />}
+        sx={{ whiteSpace: 'nowrap' }}
+      >
+        Thêm vào giỏ
+      </Button>
+
+      <Button
+        fullWidth
+        size="large"
+        variant="contained"
+        color="primary"
+        sx={{
+          backgroundColor: '#1976d2',
+          color: '#fff',
+          textTransform: 'none',
+          fontSize: '16px',
+          padding: '10px 20px',
+          borderRadius: '8px',
+          '&:hover': {
+            backgroundColor: '#1565c0',
+          },
+        }}
+        onClick={() => window.location.href = 'tel:0942580848'}
+        startIcon={<Iconify icon="solar:phone-bold" />}
+      >
+        Liên hệ <Typography variant='body2' fontWeight='bold' color='yellow'>&nbsp;0942580848</Typography>
+      </Button>
+    </Box>
+  );
 
   const renderPrice = () => (
-    <Box sx={{ typography: 'h5' }}>
-      Tác giả: {author}
-    </Box>
+    <>
+      <Box sx={{ typography: 'h5' }}>
+        Tác giả: {author}
+      </Box>
+      <Box sx={{ typography: 'h5', color: '#ff6c6b' }}>
+        Giá: {formatCurrencyVND(price)}
+      </Box>
+    </>
   );
 
   return (
@@ -131,7 +212,11 @@ Mỗi cuốn sách là một cánh cửa mở ra thế giới mới — từ ki�
           {renderSubDescription()}
         </Stack>
 
+        {/* {renderQuantity()} */}
+
         <Divider sx={{ borderStyle: 'dashed' }} />
+        {renderActions()}
+        {renderShare()}
       </Stack>
     </Form>
   );

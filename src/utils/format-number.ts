@@ -54,6 +54,20 @@ export function fCurrency(inputValue: InputNumberValue, options?: Options) {
   return fm;
 }
 
+export function formatCurrencyVND(input: number | string): string {
+  const number = Number(input);
+  if (isNaN(number)) return '';
+
+  const value = number * 1000;
+
+  return value.toLocaleString('vi-VN', {
+    style: 'currency',
+    currency: 'VND',
+    minimumFractionDigits: 0,
+  });
+}
+
+
 // ----------------------------------------------------------------------
 
 export function fPercent(inputValue: InputNumberValue, options?: Options) {

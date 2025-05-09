@@ -1,0 +1,527 @@
+[
+  {
+    "Môn học": "Khoa học tự nhiên",
+    "Tên sách": "Những điều thú vị về Oxi và Không Khí.",
+    "Lớp": "Lớp 6",
+    "Tác giả": "Phạm Công Phú",
+    "Giá": 452
+  },
+  {
+    "Môn học": "Khoa học tự nhiên",
+    "Tên sách": "Những điều thú vị về Vật chất quanh ta.",
+    "Lớp": "Lớp 6",
+    "Tác giả": "Phạm Công Phú",
+    "Giá": 435
+  },
+  {
+    "Môn học": "Khoa học tự nhiên",
+    "Tên sách": "Tuyển tập 500 câu hỏi trắc nghiệm về Hóa học và môi trường (tập 1)",
+    "Lớp": "Lớp 7, 8, 9",
+    "Tác giả": "Đồng Ngọc Bích Ngân",
+    "Giá": 420
+  },
+  {
+    "Môn học": "Khoa học tự nhiên",
+    "Tên sách": "Tuyển tập 500 câu hỏi trắc nghiệm về Hóa học và môi trường (tập 2)",
+    "Lớp": "Lớp 7, 8, 9",
+    "Tác giả": "Đồng Ngọc Bích Ngân",
+    "Giá": 426
+  },
+  {
+    "Môn học": "Khoa học tự nhiên",
+    "Tên sách": "Tuyển tập 500 câu hỏi trắc nghiệm về Hóa học và đời sống (tập 1)",
+    "Lớp": "Lớp 7, 8, 9",
+    "Tác giả": "Nguyễn Ngọc Bích",
+    "Giá": 361
+  },
+  {
+    "Môn học": "Khoa học tự nhiên",
+    "Tên sách": "Tuyển tập 500 câu hỏi trắc nghiệm về Hóa học và đời sống (tập 2)",
+    "Lớp": "Lớp 7, 8, 9",
+    "Tác giả": "Nguyễn Ngọc Bích",
+    "Giá": 533
+  },
+  {
+    "Môn học": "Khoa học tự nhiên",
+    "Tên sách": "Trao đổi chất và chuyển hóa năng lượng ở sinh vật và ứng dụng 7",
+    "Lớp": "Lớp 7",
+    "Tác giả": "Phạm Công Phú",
+    "Giá": 599
+  },
+  {
+    "Môn học": "Khoa học tự nhiên",
+    "Tên sách": "Cảm ứng, sinh trưởng, phát triển và sinh sản ở sinh vật và ứng dụng 7",
+    "Lớp": "Lớp 7",
+    "Tác giả": "Phạm Công Phú",
+    "Giá": 445
+  },
+  {
+    "Môn học": "Hoạt động trải nghiệm",
+    "Tên sách": "Kết nối cuộc sống - Khám phá và rèn luyện bản thân.",
+    "Lớp": "Lớp 8",
+    "Tác giả": "Nguyễn Quốc Cường",
+    "Giá": 440
+  },
+  {
+    "Môn học": "Hoạt động trải nghiệm",
+    "Tên sách": "Kết nối cuộc sống - Tham gia xây dựng gia đình, nhà trường và cộng đồng.",
+    "Lớp": "Lớp 8",
+    "Tác giả": "Nguyễn Quốc Cường",
+    "Giá": 410
+  },
+  {
+    "Môn học": "Hoạt động trải nghiệm",
+    "Tên sách": "Kết nối cuộc sống - Thiên nhiên và hành động của chúng ta.",
+    "Lớp": "Lớp 8",
+    "Tác giả": "Nguyễn Quốc Cường",
+    "Giá": 471
+  },
+  {
+    "Môn học": "Hoạt động trải nghiệm",
+    "Tên sách": "Kết nối cuộc sống - Khám phá nghề nghiệp.",
+    "Lớp": "Lớp 8",
+    "Tác giả": "Nguyễn Quốc Cường",
+    "Giá": 437
+  },
+  {
+    "Môn học": "Hoạt động trải nghiệm",
+    "Tên sách": "Thực hành Hoạt động trải nghiệm, hướng nghiệp 7",
+    "Lớp": "Lớp 7",
+    "Tác giả": "Nguyễn Quốc Cường",
+    "Giá": 305
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Rèn luyện ngữ âm tiếng Anh 6.",
+    "Lớp": "Lớp 6",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 433
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Rèn luyện kỹ năng nghe tiếng Anh 6.",
+    "Lớp": "Lớp 6",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 393
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Rèn luyện kỹ năng nói tiếng Anh 6.",
+    "Lớp": "Lớp 6",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 411
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Rèn luyện kỹ năng đọc hiểu tiếng Anh 6.",
+    "Lớp": "Lớp 6",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 321
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Rèn luyện kỹ năng viết tiếng Anh 6.",
+    "Lớp": "Lớp 6",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 540
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Rèn luyện ngữ pháp tiếng Anh 6.",
+    "Lớp": "Lớp 6",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 551
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Rèn luyện từ vựng tiếng Anh 6.",
+    "Lớp": "Lớp 6",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 449
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Trắc nghiệm ngữ pháp tiếng Anh 6.",
+    "Lớp": "Lớp 6",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 474
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Trắc nghiệm từ vựng tiếng Anh 6.",
+    "Lớp": "Lớp 6",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 451
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Bộ đề kiểm tra, đánh giá tiếng Anh 6.",
+    "Lớp": "Lớp 6",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 486
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Rèn luyện ngữ âm tiếng Anh 7 Theo chương trình giáo dục phổ thông mới.",
+    "Lớp": "Lớp 7",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 313
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Rèn luyện kĩ năng đọc hiểu tiếng Anh 7",
+    "Lớp": "Lớp 7",
+    "Tác giả": "Phạm Công Phú",
+    "Giá": 454
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Trắc nghiệm ngữ pháp tiếng Anh 7",
+    "Lớp": "Lớp 7",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 425
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Bí quyết Rèn luyện từ vựng tiếng Anh 7, 8, 9",
+    "Lớp": "Lớp 7, 8, 9",
+    "Tác giả": "Nguyễn Thị Ngọc Phương",
+    "Giá": 597
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Chinh phục từ vựng Tiếng Anh 7, 8, 9",
+    "Lớp": "Lớp 7, 8, 9",
+    "Tác giả": "Nguyễn Thị Ngọc Phương",
+    "Giá": 419
+  },
+  {
+    "Môn học": "Ngữ Văn",
+    "Tên sách": "Mạch Kiến Thức Tiếng Việt 10, 11, 12: Thực Hành Tiếng Việt",
+    "Lớp": "Lớp 10, 11, 12",
+    "Tác giả": "Lê Hoàng Toàn",
+    "Giá": 322
+  },
+  {
+    "Môn học": "Ngữ Văn",
+    "Tên sách": "Mạch Kiến Thức Tiếng Việt 10, 11, 12: Thực Hành Viết Văn Bản",
+    "Lớp": "Lớp 10, 11, 12",
+    "Tác giả": "Lê Hoàng Toàn",
+    "Giá": 377
+  },
+  {
+    "Môn học": "Ngữ Văn",
+    "Tên sách": "Hướng dẫn bí quyết học tốt Ngữ Văn 10, 11, 12",
+    "Lớp": "Lớp 10, 11, 12",
+    "Tác giả": "Hoàng Thị Khuyến",
+    "Giá": 574
+  },
+  {
+    "Môn học": "Lịch sử",
+    "Tên sách": "Cùng tìm hiểu cộng đồng các dân tộc Việt Nam",
+    "Lớp": "10",
+    "Tác giả": "Bùi Nhật Khoa",
+    "Giá": 556
+  },
+  {
+    "Môn học": "Lịch sử",
+    "Tên sách": "Chúng ta cùng bảo tồn và phát huy giá trị di sản văn hoá ở Việt Nam",
+    "Lớp": "10",
+    "Tác giả": "Bùi Nhật Khoa",
+    "Giá": 378
+  },
+  {
+    "Môn học": "Lịch sử",
+    "Tên sách": "Cùng tìm hiểu lịch sử nghệ thuật truyền thống Việt Nam",
+    "Lớp": "11",
+    "Tác giả": "Bùi Nhật Khoa",
+    "Giá": 590
+  },
+  {
+    "Môn học": "Lịch sử",
+    "Tên sách": "Quá trình giành độc lập dân tộc của các quốc gia Đông Nam Á",
+    "Lớp": "11",
+    "Tác giả": "Bùi Nhật Khoa",
+    "Giá": 516
+  },
+  {
+    "Môn học": "Địa lí",
+    "Tên sách": "Biến đổi khí hậu",
+    "Lớp": "10",
+    "Tác giả": "Quan Văn Út",
+    "Giá": 302
+  },
+  {
+    "Môn học": "Địa lí",
+    "Tên sách": "Chúng ta cùng tìm hiểu về đô thị hoá",
+    "Lớp": "10",
+    "Tác giả": "Quan Văn Út",
+    "Giá": 369
+  },
+  {
+    "Môn học": "Địa lí",
+    "Tên sách": "Một số vấn đề về du lịch thế giới",
+    "Lớp": "11",
+    "Tác giả": "Quan Văn Út",
+    "Giá": 451
+  },
+  {
+    "Môn học": "Địa lí",
+    "Tên sách": "Một số vấn đề về kinh tế - xã hội thế giới",
+    "Lớp": "11",
+    "Tác giả": "Quan Văn Út",
+    "Giá": 476
+  },
+  {
+    "Môn học": "Vật lí",
+    "Tên sách": "Biến dạng của vật rắn",
+    "Lớp": "10",
+    "Tác giả": "Châu Trung Tính",
+    "Giá": 506
+  },
+  {
+    "Môn học": "Vật lí",
+    "Tên sách": "Động lực học",
+    "Lớp": "10",
+    "Tác giả": "Châu Trung Tính",
+    "Giá": 545
+  },
+  {
+    "Môn học": "Vật lí",
+    "Tên sách": "Mở đầu về điện tử học",
+    "Lớp": "11",
+    "Tác giả": "Châu Trung Tính",
+    "Giá": 559
+  },
+  {
+    "Môn học": "Vật lí",
+    "Tên sách": "Dòng điện, mạch điện",
+    "Lớp": "11",
+    "Tác giả": "Châu Trung Tính",
+    "Giá": 460
+  },
+  {
+    "Môn học": "Tiếng anh",
+    "Tên sách": "300 bài tập tiếng anh lớp 10",
+    "Lớp": "10",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 314
+  },
+  {
+    "Môn học": "Tiếng anh",
+    "Tên sách": "Luyện ngữ pháp và bài tập tiếng anh lớp 10",
+    "Lớp": "10",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 444
+  },
+  {
+    "Môn học": "Tiếng anh",
+    "Tên sách": "Kĩ năng đọc hiểu chuyên sâu tiếng anh lớp 10",
+    "Lớp": "10",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 566
+  },
+  {
+    "Môn học": "Tiếng anh",
+    "Tên sách": "300 bài tập tiếng anh lớp 11",
+    "Lớp": "11",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 402
+  },
+  {
+    "Môn học": "Tiếng anh",
+    "Tên sách": "Luyện ngữ pháp và bài tập tiếng anh lớp 11",
+    "Lớp": "11",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 559
+  },
+  {
+    "Môn học": "Tiếng anh",
+    "Tên sách": "Kĩ năng đọc hiểu chuyên sâu tiếng anh lớp 11",
+    "Lớp": "11",
+    "Tác giả": "Huỳnh Văn Lý",
+    "Giá": 522
+  },
+  {
+    "Môn học": "Hoá học",
+    "Tên sách": "Phản ứng oxi hoá - khử",
+    "Lớp": "10",
+    "Tác giả": "Đồng Ngọc Bích Ngân",
+    "Giá": 480
+  },
+  {
+    "Môn học": "Hoá học",
+    "Tên sách": "Tốc độ phản ứng hoá học",
+    "Lớp": "10",
+    "Tác giả": "Đồng Ngọc Bích Ngân",
+    "Giá": 417
+  },
+  {
+    "Môn học": "Hoá học",
+    "Tên sách": "Một số hợp chất với oxygen của nitrogen",
+    "Lớp": "11",
+    "Tác giả": "Đồng Ngọc Bích Ngân",
+    "Giá": 437
+  },
+  {
+    "Môn học": "Hoá học",
+    "Tên sách": "Phương pháp tách biệt và tinh chế hợp chất hữu cơ",
+    "Lớp": "11",
+    "Tác giả": "Đồng Ngọc Bích Ngân",
+    "Giá": 343
+  },
+  {
+    "Môn học": "Sinh học",
+    "Tên sách": "Sinh học tế bào lớp 10",
+    "Lớp": "10",
+    "Tác giả": "Phạm Công Phú",
+    "Giá": 362
+  },
+  {
+    "Môn học": "Sinh học",
+    "Tên sách": "Sinh học vi sinh vật và virus",
+    "Lớp": "10",
+    "Tác giả": "Phạm Công Phú",
+    "Giá": 463
+  },
+  {
+    "Môn học": "Sinh học",
+    "Tên sách": "Sinh học cơ thể",
+    "Lớp": "11",
+    "Tác giả": "Phạm Công Phú",
+    "Giá": 590
+  },
+  {
+    "Môn học": "Sinh học",
+    "Tên sách": "Sinh học tế bào lớp 11",
+    "Lớp": "11",
+    "Tác giả": "Phạm Công Phú",
+    "Giá": 578
+  },
+  {
+    "Môn học": "Tiếng Anh",
+    "Tên sách": "Trắc nghiệm ngữ pháp tiếng Anh",
+    "Lớp": "4",
+    "Tác giả": "Phạm Công Phú",
+    "Giá": 568
+  },
+  {
+    "Môn học": "Công nghệ",
+    "Tên sách": "An toàn với môi trường công nghệ trong gia đình",
+    "Lớp": "4",
+    "Tác giả": "Phạm Công Phú",
+    "Giá": 333
+  },
+  {
+    "Môn học": "Công nghệ",
+    "Tên sách": "An toàn điện",
+    "Lớp": "8",
+    "Tác giả": "Phạm Công Phú",
+    "Giá": 374
+  },
+  {
+    "Môn học": "Công nghệ",
+    "Tên sách": "Các phương pháp gia công cơ khí",
+    "Lớp": "11",
+    "Tác giả": "Phạm Công Phú",
+    "Giá": 410
+  },
+  {
+    "Môn học": "Khoa học",
+    "Tên sách": "Vai trò của năng lượng",
+    "Lớp": "4",
+    "Tác giả": "Phạm Công Phú",
+    "Giá": 320
+  },
+  {
+    "Môn học": "Tiếng Việt",
+    "Tên sách": "Cùng luyện Kĩ thuật viết",
+    "Lớp": "4",
+    "Tác giả": "Huỳnh Như Phượng",
+    "Giá": 491
+  },
+  {
+    "Môn học": "Giáo dục công dân",
+    "Tên sách": "Lao động cần cù, sáng tạo",
+    "Lớp": "8",
+    "Tác giả": "Lê Thị Thanh Dẹn",
+    "Giá": 345
+  },
+  {
+    "Môn học": "Giáo Dục Kinh Tế Pháp Luật",
+    "Tên sách": "Một số quyền dân chủ cơ bản của công dân",
+    "Lớp": "11",
+    "Tác giả": "Lê Thị Thanh Dẹn",
+    "Giá": 442
+  },
+  {
+    "Môn học": "Lịch sử",
+    "Tên sách": "Quá trình xâm lược Đông Nam Á của thực dân phương Tây",
+    "Lớp": "8",
+    "Tác giả": "Bùi Nhật Khoa",
+    "Giá": 339
+  },
+  {
+    "Môn học": "Lịch sử",
+    "Tên sách": "Cùng tìm hiểu địa đạo Củ Chi",
+    "Lớp": "4",
+    "Tác giả": "Bùi Nhật Khoa",
+    "Giá": 484
+  },
+  {
+    "Môn học": "Địa lí",
+    "Tên sách": "Cùng tìm hiểu tác động của biến đổi khí hậu đối với khí hậu và thủy văn Việt Nam",
+    "Lớp": "8",
+    "Tác giả": "Nguyễn Võ Thị Mỹ Thà",
+    "Giá": 429
+  },
+  {
+    "Môn học": "Địa lí",
+    "Tên sách": "Địa phương và các vùng miền của Việt Nam",
+    "Lớp": "4",
+    "Tác giả": "Nguyễn Võ Thị Mỹ Thà",
+    "Giá": 433
+  },
+  {
+    "Môn học": "Ngữ Văn",
+    "Tên sách": "Tìm hiểu về văn bản nghị luận",
+    "Lớp": "8",
+    "Tác giả": "Ngô Thúy Kiểu",
+    "Giá": 498
+  },
+  {
+    "Môn học": "Hoạt động trải nghiệm, hướng nghiệp",
+    "Tên sách": "150 bài tập thực hành môn Hoạt Động Trải Nghiệm",
+    "Lớp": "11",
+    "Tác giả": "Nguyễn Quốc Cường",
+    "Giá": 423
+  },
+  {
+    "Môn học": "Đạo đức",
+    "Tên sách": "Cảm thông, giúp đỡ người gặp khó khăn",
+    "Lớp": "4",
+    "Tác giả": "Nguyễn Quốc Cường",
+    "Giá": 300
+  },
+  {
+    "Môn học": "Toán học",
+    "Tên sách": "Hướng dẫn tự học Thống kê xác suất THPT",
+    "Lớp": "10, 11, 12",
+    "Tác giả": "Chương Dương Thông",
+    "Giá": 557
+  },
+  {
+    "Môn học": "Toán học",
+    "Tên sách": "Hướng dẫn tự học Đại số và giải tích THPT",
+    "Lớp": "10, 11, 12",
+    "Tác giả": "Chương Dương Thông",
+    "Giá": 381
+  },
+  {
+    "Môn học": "Toán học",
+    "Tên sách": "Hướng dẫn tự học Hình học đo lường THPT",
+    "Lớp": "10, 11, 12",
+    "Tác giả": "Chương Dương Thông",
+    "Giá": 461
+  }
+]

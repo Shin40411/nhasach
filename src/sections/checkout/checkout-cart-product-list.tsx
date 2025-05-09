@@ -12,10 +12,10 @@ import { CheckoutCartProduct } from './checkout-cart-product';
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD: TableHeadCellProps[] = [
-  { id: 'product', label: 'Product' },
-  { id: 'price', label: 'Price' },
-  { id: 'quantity', label: 'Quantity' },
-  { id: 'totalAmount', label: 'Total Price', align: 'right' },
+  { id: 'product', label: 'Sản phẩm' },
+  { id: 'price', label: 'Giá' },
+  { id: 'quantity', label: 'Số lượng' },
+  { id: 'totalAmount', label: 'Tổng tiền', align: 'right' },
   { id: '' },
 ];
 

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import DanhSachSGK from '../_mock/_map/DanhSachSGK.json';
+import DanhSachSGK from '../_mock/_map/DanhSachSGK2.json';
 import { IBookItem, IBookFilters } from 'src/types/book';
 import { allComponents } from "src/sections/nhasach/layout";
 import { kebabCaseVietnamese } from "src/utils/kebabVN";
@@ -31,7 +31,8 @@ export const BOOKS: IBookItem[] = DanhSachSGK.map((book, index) => ({
     title: book['Tên sách'],
     subject: book['Môn học'],
     grade: book['Lớp'],
-    author: book['Tác giả']
+    author: book['Tác giả'],
+    price: String(book['Giá'])
 }));
 
 export function useGetBook(bookId: string) {

@@ -47,8 +47,8 @@ export function CheckoutCart() {
 
   const renderEmpty = () => (
     <EmptyContent
-      title="Cart is empty!"
-      description="Look like you have no items in your shopping cart."
+      title="Chưa có gì trong giỏ hàng!"
+      description="Có vẻ như bạn chưa thêm gì vào giỏ hàng."
       imgUrl={`${CONFIG.assetsDir}/assets/icons/empty/ic-cart.svg`}
       sx={{ height: 340 }}
     />
@@ -61,9 +61,9 @@ export function CheckoutCart() {
           <CardHeader
             title={
               <Typography variant="h6">
-                {`Cart `}
+                {`Giỏ hàng `}
                 <Typography component="span" sx={{ color: 'text.secondary' }}>
-                  ({checkoutState.totalItems} items)
+                  ({checkoutState.totalItems} sản phẩm)
                 </Typography>
               </Typography>
             }
@@ -88,12 +88,11 @@ export function CheckoutCart() {
         </Card>
 
         <Button
-          component={RouterLink}
-          href={paths.product.root}
           color="inherit"
           startIcon={<Iconify icon="eva:arrow-ios-back-fill" />}
+          onClick={() => window.history.back()}
         >
-          Continue shopping
+          Quay lại
         </Button>
       </Grid>
 
@@ -108,7 +107,7 @@ export function CheckoutCart() {
           disabled={isCartEmpty}
           onClick={() => onChangeStep('next')}
         >
-          Check out
+          Thanh toán
         </Button>
       </Grid>
     </Grid>

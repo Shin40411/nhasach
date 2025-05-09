@@ -9,7 +9,7 @@ import TableCell from '@mui/material/TableCell';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
-import { fCurrency } from 'src/utils/format-number';
+import { fCurrency, formatCurrencyVND } from 'src/utils/format-number';
 
 import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
@@ -49,15 +49,15 @@ export function CheckoutCartProduct({ row, onDeleteCartItem, onChangeItemQuantit
                 color: 'text.secondary',
               }}
             >
-              size: <Label sx={{ ml: 0.5 }}> {row.size} </Label>
+              Môn: <Label sx={{ ml: 0.5 }}> {row.size} </Label>
               <Divider orientation="vertical" sx={{ mx: 1, height: 16 }} />
-              <ColorPreview colors={row.colors} />
+              <Label sx={{ ml: 0.5 }}> {row.colors} </Label>
             </Box>
           </Stack>
         </Box>
       </TableCell>
 
-      <TableCell>{fCurrency(row.price)}</TableCell>
+      <TableCell>{formatCurrencyVND(row.price)}</TableCell>
 
       <TableCell>
         <Box sx={{ width: 100, textAlign: 'right' }}>
@@ -67,14 +67,13 @@ export function CheckoutCartProduct({ row, onDeleteCartItem, onChangeItemQuantit
             onChange={(event, quantity: number) => onChangeItemQuantity(row.id, quantity)}
             max={row.available}
           />
-
-          <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mt: 1 }}>
+          {/* <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mt: 1 }}>
             available: {row.available}
-          </Typography>
+          </Typography> */}
         </Box>
       </TableCell>
 
-      <TableCell align="right">{fCurrency(row.price * row.quantity)}</TableCell>
+      <TableCell align="right">{formatCurrencyVND(row.price * row.quantity)}</TableCell>
 
       <TableCell align="right" sx={{ px: 1 }}>
         <IconButton onClick={() => onDeleteCartItem(row.id)}>

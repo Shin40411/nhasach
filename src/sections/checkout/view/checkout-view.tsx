@@ -17,7 +17,7 @@ export function CheckoutView() {
   return (
     <Container sx={{ mb: 10 }}>
       <Typography variant="h4" sx={{ my: { xs: 3, md: 5 } }}>
-        Checkout
+        Thanh toán
       </Typography>
 
       <Grid container justifyContent={completed ? 'center' : 'flex-start'}>

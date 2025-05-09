@@ -28,6 +28,7 @@ import { IBookItem } from 'src/types/book';
 import { CONFIG } from 'src/global-config';
 import { kebabCaseUnQuoteVn } from 'src/utils/kebabVN';
 import { getInitials } from 'src/utils/getInitials';
+import { CartIcon } from '../cart-icon';
 
 // ----------------------------------------------------------------------
 
@@ -58,17 +59,36 @@ type Props = {
 };
 
 export function ProductShopDetailsView({ product, error, loading }: Props) {
-  // const { state: checkoutState, onAddToCart } = useCheckoutContext();
+  const { state: checkoutState, onAddToCart } = useCheckoutContext();
 
   const containerStyles: SxProps<Theme> = {
     mt: 5,
     mb: 10,
   };
 
+  // const descriptions = `
+  // Tác giả: ${product?.author} <br />
+  // Thuộc: ${product?.grade} <br />
+  // Bộ môn: ${product?.subject}`;
+
   const descriptions = `
-  Tác giả: ${product?.author} <br />
-  Thuộc: ${product?.grade} <br />
-  Bộ môn: ${product?.subject}`;
+  <table>
+    <tbody>
+      <tr>
+        <td>Tác giả</td>
+        <td>${product?.author}</td>
+      </tr>
+      <tr>
+        <td>Thuộc lớp</td>
+        <td>${product?.grade}</td>
+      </tr>
+      <tr>
+        <td>Bộ môn</td>
+        <td>${product?.subject}</td>
+      </tr>
+    </tbody>
+  </table>
+  `;
 
   let gradeComponent = '';
   let gradeExplodeComponent = '';
@@ -129,6 +149,8 @@ export function ProductShopDetailsView({ product, error, loading }: Props) {
 
   return (
     <Container sx={containerStyles}>
+      <CartIcon totalItems={checkoutState.totalItems} />
+
       <CustomBreadcrumbs
         links={[
           { name: 'Trang chủ', href: '/' },
@@ -146,30 +168,13 @@ export function ProductShopDetailsView({ product, error, loading }: Props) {
           {product && (
             <ProductDetailsSummary
               product={product}
-            // items={checkoutState.items}
+              items={checkoutState.items}
+              onAddToCart={onAddToCart}
+              coverUrl={thumbnailBook[0]}
             />
           )}
-          <Box sx={{ my: 4 }}>
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{
-              backgroundColor: '#1976d2',
-              color: '#fff',
-              textTransform: 'none',
-              fontSize: '16px',
-              padding: '10px 20px',
-              borderRadius: '8px',
-              '&:hover': {
-                backgroundColor: '#1565c0',
-              },
-              }}
-              onClick={() => window.location.href = 'tel:0942580848'}
-              startIcon={<Iconify icon="solar:phone-bold" />}
-            >
-              Liên hệ ngay: <Typography variant='body2' fontWeight='bold' color='yellow'>&nbsp;0942580848</Typography>
-            </Button>
-          </Box>
+          {/* <Box sx={{ my: 4 }}>
+          </Box> */}
         </Grid>
       </Grid>
       <Box

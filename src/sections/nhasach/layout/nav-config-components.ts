@@ -14,6 +14,7 @@ type CreateNavItemProps = {
   category: 'foundation' | 'mui' | 'extra' | 'sgk';
   class: string;
   idBook?: string;
+  priceBook?: string;
 };
 
 export type NavItemData = {
@@ -23,19 +24,21 @@ export type NavItemData = {
   hrefChildren?: string;
   packageType?: string;
   class: string;
+  priceBook?: string;
 };
 
-const createNavItem = ({ category, name, iconPrefix, packageType, class: className, idBook }: CreateNavItemProps) => ({
+const createNavItem = ({ category, name, iconPrefix, packageType, class: className, idBook, priceBook }: CreateNavItemProps) => ({
   name,
   href: generateNavHref(packageType, className),
   hrefChildren: `/${idBook}/${kebabCaseVietnamese(name)}`,
   icon: `${CONFIG.assetsDir}/assets/Thumbnail/${iconPrefix}`,
   packageType,
   class: className,
+  priceBook: priceBook
 });
 
 const sgkGroupedNav = BOOKS.reduce((acc, book) => {
-  const { subject, title, grade, id } = book;
+  const { subject, title, grade, id, price } = book;
 
   if (!acc[subject]) {
     acc[subject] = [];
@@ -70,7 +73,8 @@ const sgkGroupedNav = BOOKS.reduce((acc, book) => {
       iconPrefix: BookDir,
       packageType: subject,
       class: grade,
-      idBook: id
+      idBook: id,
+      priceBook: price,
     })
   );
 

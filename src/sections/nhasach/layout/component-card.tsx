@@ -13,6 +13,7 @@ import { Image } from 'src/components/image';
 import { varTap, varHover, transitionTap } from 'src/components/animate';
 
 import type { NavItemData } from './nav-config-components';
+import { formatCurrencyVND } from 'src/utils/format-number';
 
 // ----------------------------------------------------------------------
 
@@ -72,7 +73,22 @@ export function ComponentCard({ item, sx, ...other }: ComponentCardProps) {
         ]}
       >
         <m.div whileTap={varTap(0.98)} whileHover={varHover()} transition={transitionTap()}>
-          <Image alt={item.name} src={item.icon} ratio="1/1" disablePlaceholder />
+          <Box sx={{ position: 'relative' }}>
+            <Image alt={item.name} src={item.icon} ratio="1/1" disablePlaceholder />
+            <Box sx={{
+              position: 'absolute',
+              bottom: 0,
+              right: 0,
+              px: 1,
+              backgroundColor: '#ff6c6b',
+              borderRadius: '5px 0px 0px',
+              fontSize: '12px',
+              fontWeight: 'bold',
+              color: '#fff'
+            }}>
+              {formatCurrencyVND(item.priceBook || '')}
+            </Box>
+          </Box>
         </m.div>
       </Box>
 
