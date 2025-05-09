@@ -1,1 +1,0 @@
-import{j as o}from"./index-D6bpUwKX.js";import{F as m}from"./styles-D8b8rnOK.js";function a({children:r,onSubmit:t,methods:e}){return o.jsx(m,{...e,children:o.jsx("form",{onSubmit:t,noValidate:!0,autoComplete:"off",children:r})})}export{a as F};
