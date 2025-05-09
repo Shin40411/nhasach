@@ -157,7 +157,6 @@ export function ProductShopDetailsView({ product, error, loading }: Props) {
               backgroundColor: '#1976d2',
               color: '#fff',
               textTransform: 'none',
-              fontWeight: 'bold',
               fontSize: '16px',
               padding: '10px 20px',
               borderRadius: '8px',
@@ -168,7 +167,7 @@ export function ProductShopDetailsView({ product, error, loading }: Props) {
               onClick={() => window.location.href = 'tel:0942580848'}
               startIcon={<Iconify icon="solar:phone-bold" />}
             >
-              Liên hệ ngay
+              Liên hệ ngay: <Typography variant='body2' fontWeight='bold' color='yellow'>&nbsp;0942580848</Typography>
             </Button>
           </Box>
         </Grid>
@@ -176,7 +175,7 @@ export function ProductShopDetailsView({ product, error, loading }: Props) {
       <Box
         sx={{
           gap: 5,
-          my: 10,
+          my: 2,
           display: 'grid',
           gridTemplateColumns: { xs: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' },
         }}

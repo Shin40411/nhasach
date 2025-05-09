@@ -1,0 +1,1 @@
+function t(n){if(n instanceof Error)return n.message||n.name||"An error occurred";if(typeof n=="string")return n;if(typeof n=="object"&&n!==null){const e=n.message;if(typeof e=="string")return e}return`Unknown error: ${n}`}export{t as g};
