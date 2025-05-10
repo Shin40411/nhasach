@@ -82,7 +82,7 @@ export function ComponentCard({ item, sx, ...other }: ComponentCardProps) {
               px: 1,
               backgroundColor: '#ff6c6b',
               borderRadius: '5px 0px 0px',
-              fontSize: '12px',
+              fontSize: '14px',
               fontWeight: 'bold',
               color: '#fff'
             }}>

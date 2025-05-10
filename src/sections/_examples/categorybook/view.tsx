@@ -96,7 +96,7 @@ export function CategoryBook() {
                                     xs: 'repeat(2, 1fr)',
                                     sm: 'repeat(3, 1fr)',
                                     md: 'repeat(4, 1fr)',
-                                    lg: 'repeat(5, 1fr)',
+                                    lg: 'repeat(4, 1fr)',
                                 },
                             }}
                         >

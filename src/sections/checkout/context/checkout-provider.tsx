@@ -116,6 +116,29 @@ export function CheckoutProvider({ children }: CheckoutProviderProps) {
     [setField, state.items]
   );
 
+  const onAddManyToCart = useCallback(
+    (newItems: ICheckoutItem[]) => {
+      const updatedItems = [...state.items];
+
+      newItems.forEach((newItem) => {
+        const existingItemIndex = updatedItems.findIndex((item) => item.id === newItem.id);
+
+        if (existingItemIndex !== -1) {
+          updatedItems[existingItemIndex] = {
+            ...updatedItems[existingItemIndex],
+            colors: union(updatedItems[existingItemIndex].colors, newItem.colors),
+            quantity: updatedItems[existingItemIndex].quantity + newItem.quantity,
+          };
+        } else {
+          updatedItems.push(newItem);
+        }
+      });
+
+      setField('items', updatedItems);
+    },
+    [setField, state.items]
+  );
+
   const onDeleteCartItem = useCallback(
     (itemId: string) => {
       const updatedItems = state.items.filter((item) => item.id !== itemId);
@@ -181,6 +204,7 @@ export function CheckoutProvider({ children }: CheckoutProviderProps) {
       completed,
       /********/
       onAddToCart,
+      onAddManyToCart,
       onResetCart,
       onApplyDiscount,
       onApplyShipping,
@@ -198,6 +222,7 @@ export function CheckoutProvider({ children }: CheckoutProviderProps) {
       activeStep,
       onResetCart,
       onAddToCart,
+      onAddManyToCart,
       onChangeStep,
       onApplyDiscount,
       onApplyShipping,

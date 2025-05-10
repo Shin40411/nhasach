@@ -309,7 +309,7 @@ function MemberCard({ member }: MemberCardProps) {
         </IconButton>
       ))} */}
 
-      <Box sx={{ px: 1 }}>
+      <Box sx={{ px: 1, pt: 1 }}>
         <Image alt={member.name} src={member.avatarUrl} ratio="1/1" sx={{ borderRadius: 2 }} />
       </Box>
 

@@ -15,6 +15,7 @@ type CreateNavItemProps = {
   class: string;
   idBook?: string;
   priceBook?: string;
+  author?: string;
 };
 
 export type NavItemData = {
@@ -25,20 +26,23 @@ export type NavItemData = {
   packageType?: string;
   class: string;
   priceBook?: string;
+  idBook?: string;
+  author?: string;
 };
 
-const createNavItem = ({ category, name, iconPrefix, packageType, class: className, idBook, priceBook }: CreateNavItemProps) => ({
+const createNavItem = ({ category, name, iconPrefix, packageType, class: className, idBook, priceBook, author }: CreateNavItemProps) => ({
   name,
   href: generateNavHref(packageType, className),
   hrefChildren: `/${idBook}/${kebabCaseVietnamese(name)}`,
   icon: `${CONFIG.assetsDir}/assets/Thumbnail/${iconPrefix}`,
   packageType,
   class: className,
-  priceBook: priceBook
+  priceBook: priceBook,
+  author: author
 });
 
 const sgkGroupedNav = BOOKS.reduce((acc, book) => {
-  const { subject, title, grade, id, price } = book;
+  const { subject, title, grade, id, price, author } = book;
 
   if (!acc[subject]) {
     acc[subject] = [];

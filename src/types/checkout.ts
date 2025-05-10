@@ -58,6 +58,7 @@ export type CheckoutContextValue = {
   /********/
   onResetCart: () => void;
   onAddToCart: (newItem: ICheckoutItem) => void;
+  onAddManyToCart: (items: ICheckoutItem[]) => void;
   onDeleteCartItem: (itemId: string) => void;
   onApplyDiscount: (discount: number) => void;
   onApplyShipping: (discount: number) => void;

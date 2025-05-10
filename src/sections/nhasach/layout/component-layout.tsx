@@ -94,7 +94,7 @@ export function ComponentLayout({
   //     <SecondaryNav navData={sectionData} activeItem={activeIndex} onClickItem={scrollToSection} />
   //   );
   const renderContent = () => (
-    <LayoutContainer maxWidth="md" {...containerProps}>
+    <LayoutContainer maxWidth="lg" {...containerProps}>
       <NavSearch
         navData={allComponents}
         sx={{ mb: 4 }}
