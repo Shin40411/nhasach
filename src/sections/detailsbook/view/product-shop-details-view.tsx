@@ -134,7 +134,7 @@ export function ProductShopDetailsView({ product, error, loading }: Props) {
           action={
             <Button
               component={RouterLink}
-              href={paths.product.root}
+              href='/'
               startIcon={<Iconify width={16} icon="eva:arrow-ios-back-fill" />}
               sx={{ mt: 3 }}
             >

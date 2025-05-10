@@ -27,7 +27,7 @@ import { FloatLine, FloatTriangleLeftIcon } from './components/svg-elements';
 
 import { Image } from 'src/components/image';
 import { Carousel, CarouselArrowFloatButtons, useCarousel } from 'src/components/carousel';
-import DanhSachSGK from '../../_mock/_map/DanhSachSGK.json';
+import DanhSachSGK from '../../_mock/_map/DanhSachSGK2.json';
 import { kebabCase } from 'es-toolkit';
 import { kebabCaseUnQuoteVn } from 'src/utils/kebabVN';
 import { getInitials } from 'src/utils/getInitials';
@@ -42,6 +42,7 @@ type BookItem = {
   "Tên sách": string;
   "Lớp": string;
   "Tác giả": string;
+  "Giá": number;
 };
 
 const thumbnailBook = (ten: string, mon: string, lop: string) => {

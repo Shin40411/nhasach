@@ -49,7 +49,14 @@ export function ProductDetailsSummary({
     price
   } = product;
 
+  const quantity = 100;
+
   const existProduct = !!items?.length && items.map((item) => item.id).includes(id);
+
+  const isMaxQuantity =
+    !!items?.length &&
+    items.filter((item) => item.id === id).map((item) => item.quantity)[0] >= quantity;
+
 
   const defaultValues = {
     id,
@@ -57,7 +64,8 @@ export function ProductDetailsSummary({
     subject,
     author,
     grade,
-    price
+    price,
+    quantity: quantity < 1 ? 0 : 1,
   };
 
   const methods = useForm<typeof defaultValues>({
@@ -123,11 +131,20 @@ export function ProductDetailsSummary({
       <Stack spacing={1}>
         <NumberInput
           hideDivider
-          value={1}
-          // onChange={(event, quantity: number) => setValue('quantity', quantity)}
-          max={100}
+          value={values.quantity}
+          min={1}
+          onChange={(event, quantity: number) => setValue('quantity', quantity)}
+          max={quantity}
           sx={{ maxWidth: 112 }}
         />
+
+        {/* <Typography
+          variant="caption"
+          component="div"
+          sx={{ textAlign: 'right', color: 'text.secondary' }}
+        >
+          Còn lại: {quantity}
+        </Typography> */}
       </Stack>
     </Box>
   );
@@ -136,14 +153,13 @@ export function ProductDetailsSummary({
     try {
       onAddToCart?.({
         ...values,
-        subtotal: Number(values.price),
+        subtotal: Number(values.price) * values.quantity,
         price: Number(values.price),
         name: values.title,
         size: values.subject,
         coverUrl: coverUrl || '',
         colors: [values.grade],
-        quantity: 1,
-        available: 1
+        available: quantity
       });
       console.log(values.grade);
     } catch (error) {
@@ -155,6 +171,7 @@ export function ProductDetailsSummary({
     <Box sx={{ gap: 2, display: 'flex' }}>
       <Button
         fullWidth
+        disabled={isMaxQuantity || disableActions}
         size="large"
         color="warning"
         variant="contained"
@@ -184,7 +201,7 @@ export function ProductDetailsSummary({
         onClick={() => window.location.href = 'tel:0942580848'}
         startIcon={<Iconify icon="solar:phone-bold" />}
       >
-        Liên hệ <Typography variant='body2' fontWeight='bold' color='yellow'>&nbsp;0942580848</Typography>
+        Liên hệ
       </Button>
     </Box>
   );
@@ -200,6 +217,11 @@ export function ProductDetailsSummary({
     </>
   );
 
+  const renderContact = () => (
+    <Typography variant='body2' fontWeight='bold' color='textDisabled'>Số điện thoại: 0942580848</Typography>
+  );
+
+
   return (
     <Form methods={methods}>
       <Stack spacing={3} sx={{ pt: 3 }} {...other}>
@@ -209,10 +231,11 @@ export function ProductDetailsSummary({
 
           {renderRating()}
           {renderPrice()}
+          {renderContact()}
           {renderSubDescription()}
         </Stack>
 
-        {/* {renderQuantity()} */}
+        {renderQuantity()}
 
         <Divider sx={{ borderStyle: 'dashed' }} />
         {renderActions()}

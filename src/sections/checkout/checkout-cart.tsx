@@ -90,9 +90,9 @@ export function CheckoutCart() {
         <Button
           color="inherit"
           startIcon={<Iconify icon="eva:arrow-ios-back-fill" />}
-          onClick={() => window.history.back()}
+          onClick={() => (window.location.href = '/')}
         >
-          Quay lại
+          Về trang chủ
         </Button>
       </Grid>
 

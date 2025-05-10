@@ -20,7 +20,7 @@ export const _faqs = Array.from({ length: 8 }, (_, index) => ({
 
 // ----------------------------------------------------------------------
 
-export const _addressBooks = Array.from({ length: 24 }, (_, index) => ({
+export const _addressBooks = Array.from({ length: 1 }, (_, index) => ({
   id: _mock.id(index),
   primary: index === 0,
   name: _mock.fullName(index),
@@ -28,7 +28,7 @@ export const _addressBooks = Array.from({ length: 24 }, (_, index) => ({
   fullAddress: _mock.fullAddress(index),
   phoneNumber: _mock.phoneNumber(index),
   company: _mock.companyNames(index + 1),
-  addressType: index === 0 ? 'Home' : 'Office',
+  addressType: index === 0 ? 'Nhà' : 'Cơ quan',
 }));
 
 // ----------------------------------------------------------------------

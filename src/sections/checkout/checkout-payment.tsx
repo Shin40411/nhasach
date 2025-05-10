@@ -19,41 +19,45 @@ import { CheckoutSummary } from './checkout-summary';
 import { CheckoutDelivery } from './checkout-delivery';
 import { CheckoutBillingInfo } from './checkout-billing-info';
 import { CheckoutPaymentMethods } from './checkout-payment-methods';
+// import { useEffect, useState } from 'react';
 
 // ----------------------------------------------------------------------
 
 const DELIVERY_OPTIONS: ICheckoutDeliveryOption[] = [
-  { value: 0, label: 'Free', description: '5-7 days delivery' },
-  { value: 10, label: 'Standard', description: '3-5 days delivery' },
-  { value: 20, label: 'Express', description: '2-3 days delivery' },
+  { value: 0, label: 'Miễn phí', description: '5-7 ngày vận chuyển' },
+  { value: 10, label: 'Nhanh', description: '3-5 ngày vận chuyển' },
+  { value: 20, label: 'Cấp tốc', description: '2-3 ngày vận chuyển' },
 ];
 
 const PAYMENT_OPTIONS: ICheckoutPaymentOption[] = [
-  {
-    value: 'paypal',
-    label: 'Pay with Paypal',
-    description: 'You will be redirected to PayPal website to complete your purchase securely.',
-  },
+  // {
+  //   value: 'paypal',
+  //   label: 'Thanh toán qua Paypal',
+  //   description: 'Bạn sẽ được chuyển hướng đến trang web PayPal để hoàn tất mua hàng một cách an toàn.',
+  // },
   {
     value: 'creditcard',
-    label: 'Credit / Debit card',
-    description: 'We support Mastercard, Visa, Discover and Stripe.',
+    label: 'Thẻ tín dụng / Thẻ ghi nợ',
+    description: 'Chúng tôi hỗ trợ Mastercard, Visa, Discover và Stripe.',
   },
-  { value: 'cash', label: 'Cash', description: 'Pay with cash when your order is delivered.' },
+  { value: 'cash', label: 'Tiền mặt', description: 'Thanh toán bằng tiền mặt khi đơn hàng của bạn được giao.' },
 ];
-
-const CARD_OPTIONS: ICheckoutCardOption[] = [
-  { value: 'visa1', label: '**** **** **** 1212 - Jimmy Holland' },
-  { value: 'visa2', label: '**** **** **** 2424 - Shawn Stokes' },
-  { value: 'mastercard', label: '**** **** **** 4545 - Cole Armstrong' },
-];
-
+// const LocalCards = JSON.parse(localStorage.getItem('cards') || '[]');
+// const CARD_OPTIONS: ICheckoutCardOption[] = LocalCards.map((card: { number: string | any[]; holder: any; }, index: number) => {
+//   const lastFourDigits = card.number.slice(-4);
+//   const masked = `**** **** **** ${lastFourDigits}`;
+//   const label = `${masked} - ${card.holder}`;
+//   return {
+//     value: `card${index + 1}`,
+//     label,
+//   };
+// });
 // ----------------------------------------------------------------------
 
 export type PaymentSchemaType = zod.infer<typeof PaymentSchema>;
 
 export const PaymentSchema = zod.object({
-  payment: zod.string().min(1, { message: 'Payment is required!' }),
+  payment: zod.string().min(1, { message: 'Bạn chưa chọn phương thức thanh toán!' }),
   // Not required
   delivery: zod.number(),
 });
@@ -106,7 +110,7 @@ export function CheckoutPayment() {
 
           <CheckoutPaymentMethods
             name="payment"
-            options={{ cards: CARD_OPTIONS, payments: PAYMENT_OPTIONS }}
+            options={{ payments: PAYMENT_OPTIONS }}
             sx={{ my: 3 }}
           />
 
@@ -116,7 +120,7 @@ export function CheckoutPayment() {
             onClick={() => onChangeStep('back')}
             startIcon={<Iconify icon="eva:arrow-ios-back-fill" />}
           >
-            Back
+            Quay lại
           </Button>
         </Grid>
 
@@ -130,7 +134,7 @@ export function CheckoutPayment() {
           <CheckoutSummary checkoutState={checkoutState} onEdit={() => onChangeStep('go', 0)} />
 
           <Button fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
-            Complete order
+            Hoàn tất đặt hàng
           </Button>
         </Grid>
       </Grid>

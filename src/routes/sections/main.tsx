@@ -50,20 +50,13 @@ export const mainRoutes: RouteObject[] = [
         ),
         children: [
           { path: 'about-us', element: <AboutPage /> },
-          // { path: 'contact-us', element: <ContactPage /> },
           { path: 'faqs', element: <FaqsPage /> },
           // { path: 'blank', element: <BlankPage /> },
           {
             path: ':idBook/:name', element: <ChiTietSachPage />,
           },
           {
-            path: 'product',
-            children: [
-              { index: true, element: <ProductListPage /> },
-              { path: 'list', element: <ProductListPage /> },
-              { path: ':id', element: <ProductDetailsPage /> },
-              { path: 'checkout', element: <ProductCheckoutPage /> },
-            ],
+            path: 'product/checkout', element: <ProductCheckoutPage />,
           },
           // {
           //   path: 'post',

@@ -70,7 +70,7 @@ export const _nativeL = [
 ];
 
 export const _fullAddress = [
-  `19034 Verna Unions Apt. 164 - Honolulu, RI / 87535`,
+  `190/B Đường Nguyễn Trãi - TP Cần Thơ`,
   `1147 Rohan Drive Suite 819 - Burlington, VT / 82021`,
   `18605 Thompson Circle Apt. 086 - Idaho Falls, WV / 50337`,
   `110 Lamar Station Apt. 730 - Hagerstown, OK / 49808`,
@@ -128,7 +128,7 @@ export const _emails = [
 // ----------------------------------------------------------------------
 
 export const _fullNames = [
-  `Jayvion Simon`,
+  `Nguyễn Văn A`,
   `Lucian Obrien`,
   `Deja Brady`,
   `Harrison Stein`,
@@ -211,7 +211,7 @@ export const _lastNames = [
 // ----------------------------------------------------------------------
 
 export const _phoneNumbers = [
-  '+1 202-555-0143',
+  '+84 706-555-143',
   '+1 416-555-0198',
   '+44 20 7946 0958',
   '+61 2 9876 5432',

@@ -58,21 +58,20 @@ export function CheckoutOrderComplete({ onResetCart, onDownloadPDF, slotProps, .
           flexDirection: 'column',
         }}
       >
-        <Typography variant="h4">Thank you for your purchase!</Typography>
+        <Typography variant="h4">Đặt hàng thành công!</Typography>
 
         <OrderCompleteIllustration />
 
         <Typography>
-          Thanks for placing order
+          Cảm ơn bạn đã đặt hàng
           <br />
           <br />
-          <Link>01dc1370-3df6-11eb-b378-0242ac130002</Link>
+          {/* <Link>01dc1370-3df6-11eb-b378-0242ac130002</Link> */}
           <br />
           <br />
-          We will send you a notification within 5 days when it ships.
-          <br /> If you have any question or queries then fell to get in contact us. <br />
-          All the best,
-        </Typography>
+          Chúng tôi sẽ gửi thông báo cho bạn trong vòng 5 ngày khi hàng được giao.
+          <br /> Nếu bạn có bất kỳ câu hỏi hoặc thắc mắc nào, hãy liên hệ với chúng tôi.
+          </Typography>
 
         <Divider sx={{ width: 1, borderStyle: 'dashed' }} />
 
@@ -86,24 +85,24 @@ export function CheckoutOrderComplete({ onResetCart, onDownloadPDF, slotProps, .
         >
           <Button
             component={RouterLink}
-            href={paths.product.root}
+            href='/'
             size="large"
             color="inherit"
             variant="outlined"
             onClick={onResetCart}
             startIcon={<Iconify icon="eva:arrow-ios-back-fill" />}
           >
-            Continue shopping
+            Trở về trang chủ
           </Button>
 
-          <Button
+          {/* <Button
             size="large"
             variant="contained"
             startIcon={<Iconify icon="eva:cloud-download-fill" />}
             onClick={onDownloadPDF}
           >
             Download as PDF
-          </Button>
+          </Button> */}
         </Box>
       </Box>
     </Dialog>

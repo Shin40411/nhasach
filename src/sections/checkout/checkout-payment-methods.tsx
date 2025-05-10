@@ -4,7 +4,7 @@ import type { ICheckoutCardOption, ICheckoutPaymentOption } from 'src/types/chec
 
 import { varAlpha } from 'minimal-shared/utils';
 import { useBoolean } from 'minimal-shared/hooks';
-import { Controller, useFormContext } from 'react-hook-form';
+import { Controller, FormProvider, useForm, useFormContext } from 'react-hook-form';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -20,13 +20,14 @@ import FormHelperText from '@mui/material/FormHelperText';
 import { Iconify } from 'src/components/iconify';
 
 import { PaymentNewCardForm } from '../payment/payment-new-card-form';
+import { useEffect, useState } from 'react';
 
 // ----------------------------------------------------------------------
 
 type Props = CardProps & {
   name: string;
   options: {
-    cards: ICheckoutCardOption[];
+    // cards: ICheckoutCardOption[];
     payments: ICheckoutPaymentOption[];
   };
 };
@@ -36,10 +37,58 @@ export function CheckoutPaymentMethods({ name, options, sx, ...other }: Props) {
 
   const openForm = useBoolean();
 
+  const methods = useForm();
+
+  const [CARD_OPTIONS, setCardOptions] = useState<ICheckoutCardOption[]>([]);
+
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem('cards') || '[]');
+
+    const mapped = stored.map((card: { number: string; holder: any; }, index: number) => {
+      const lastFour = card.number?.slice(-4) || '0000';
+      return {
+        value: `card${index + 1}`,
+        label: `**** **** **** ${lastFour} - ${card.holder}`,
+      };
+    });
+
+    setCardOptions(mapped);
+  }, []);
+
+  const onSubmit = (data: any) => {
+    try {
+      const newCard = {
+        number: data.cardNumber,
+        holder: data.cardHolder,
+        expiryDate: data.expiryDate,
+        cvv: data.cvv,
+      };
+
+      const storedCards = JSON.parse(localStorage.getItem('cards') || '[]');
+      const updatedCards = [...storedCards, newCard];
+
+      localStorage.setItem('cards', JSON.stringify(updatedCards));
+      
+      const mapped = updatedCards.map((card: any, index: number) => {
+        const lastFour = card.number?.slice(-4) || '0000';
+        return {
+          value: `card${index + 1}`,
+          label: `**** **** **** ${lastFour} - ${card.holder}`,
+        };
+      });
+
+      setCardOptions(mapped);
+
+      openForm.onFalse();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <Card sx={sx} {...other}>
-        <CardHeader title="Payment" />
+        <CardHeader title="Phương thức thanh toán" />
 
         <Controller
           name={name}
@@ -62,7 +111,7 @@ export function CheckoutPaymentMethods({ name, options, sx, ...other }: Props) {
                     option={option}
                     selected={isSelected}
                     onOpen={openForm.onTrue}
-                    cardOptions={options.cards}
+                    cardOptions={CARD_OPTIONS}
                     isCredit={isSelected && option.value === 'creditcard'}
                     onClick={() => onChange(option.value)}
                   />
@@ -79,19 +128,27 @@ export function CheckoutPaymentMethods({ name, options, sx, ...other }: Props) {
         />
       </Card>
       <Dialog fullWidth maxWidth="xs" open={openForm.value} onClose={openForm.onFalse}>
-        <DialogTitle> Add new card </DialogTitle>
+        <DialogTitle> Thêm thẻ </DialogTitle>
 
         <DialogContent sx={{ overflow: 'unset' }}>
-          <PaymentNewCardForm />
+          <FormProvider {...methods}>
+            <PaymentNewCardForm
+              isRHF={true}
+              numberField={{ name: 'cardNumber' }}
+              holderField={{ name: 'cardHolder' }}
+              dateField={{ name: 'expiryDate' }}
+              cvvField={{ name: 'cvv' }}
+            />
+          </FormProvider>
         </DialogContent>
 
         <DialogActions>
           <Button color="inherit" variant="outlined" onClick={openForm.onFalse}>
-            Cancel
+            Huỷ
           </Button>
 
-          <Button color="inherit" variant="contained" onClick={openForm.onFalse}>
-            Add
+          <Button color="inherit" variant="contained" onClick={methods.handleSubmit(onSubmit)}>
+            Thêm
           </Button>
         </DialogActions>
       </Dialog>
@@ -171,14 +228,15 @@ function OptionItem({
 
       {isCredit && (
         <Box sx={{ px: 3 }}>
-          <TextField select fullWidth label="Card" slotProps={{ select: { native: true } }}>
-            {cardOptions.map((card) => (
-              <option key={card.value} value={card.value}>
-                {card.label}
-              </option>
-            ))}
-          </TextField>
-
+          {cardOptions.length > 0 && (
+            <TextField select fullWidth label="Thẻ của bạn" slotProps={{ select: { native: true } }}>
+              {cardOptions.map((card) => (
+                <option key={card.value} value={card.value}>
+                  {card.label}
+                </option>
+              ))}
+            </TextField>
+          )}
           <Button
             size="small"
             color="primary"
@@ -186,7 +244,7 @@ function OptionItem({
             onClick={onOpen}
             sx={{ my: 3 }}
           >
-            Add new card
+            Thêm thẻ
           </Button>
         </Box>
       )}

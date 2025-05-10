@@ -1,5 +1,4 @@
 import { kebabCaseUnQuoteVn, kebabCaseVietnamese } from 'src/utils/kebabVN';
-import DanhSachSGK from '../../../_mock/_map/DanhSachSGK.json';
 import { generateNavHref } from './href-generated';
 import { CONFIG } from 'src/global-config';
 import { BOOKS } from 'src/actions/book';

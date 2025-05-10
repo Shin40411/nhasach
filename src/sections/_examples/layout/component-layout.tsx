@@ -109,13 +109,20 @@ export function ComponentLayout({
           .filter((section) => section.items.length > 0)}
         sx={{ mb: 4 }}
       />
+      <CustomBreadcrumbs
+        links={[
+          { name: 'Trang chủ', href: '/' },
+          { name: 'Danh mục', href: '/danh-muc' },
+          { name: sectionData?.map((section) => section.name).join(', ') }
+        ]}
+      />
       {children ?? (
         <LayoutSection>
           {sectionData?.map((section) => {
             const hashId = `${kebabCase(section.name)}`;
 
             return (
-              <Card key={section.name} id={hashId} sx={{boxShadow: 'none'}} className={queryClassName}>
+              <Card key={section.name} id={hashId} sx={{ boxShadow: 'none' }} className={queryClassName}>
                 <CardHeader
                   title={section.name}
                   subheader={section.description}

@@ -22,6 +22,7 @@ export function RHFPhoneInput({ name, helperText, ...other }: RHFPhoneInputProps
           {...field}
           fullWidth
           error={!!error}
+          disableSelect={false}
           helperText={error?.message ?? helperText}
           {...other}
         />

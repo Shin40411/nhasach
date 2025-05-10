@@ -24,14 +24,13 @@ export const categoriseRoutes: RouteObject[] = [
         children: [
             { index: true, element: <IndexPage /> },
             {
-                path: 'sach',
-                children: [
-                    { index: true, element: <Navigate to="/components/foundation/colors" replace /> },
-                    {
-                        path: ':packageType/:className',
-                        element: <SachCategoryPage />,
-                    },
-                ],
+                path: 'sach/:packageType/:className', element: <SachCategoryPage />,
+                // children: [
+                //     {
+                //         path: ':packageType/:className',
+                //         element: <SachCategoryPage />,
+                //     },
+                // ],
             }
         ],
     },

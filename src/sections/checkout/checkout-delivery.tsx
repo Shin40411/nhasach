@@ -10,6 +10,7 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 
 import { Iconify } from 'src/components/iconify';
+import { formatCurrencyVND } from 'src/utils/format-number';
 
 // ----------------------------------------------------------------------
 
@@ -24,7 +25,7 @@ export function CheckoutDelivery({ name, options, onApplyShipping, sx, ...other 
 
   return (
     <Card sx={sx} {...other}>
-      <CardHeader title="Delivery" />
+      <CardHeader title="Hình thức giao hàng" />
       <Controller
         name={name}
         control={control}
@@ -87,8 +88,8 @@ function OptionItem({ option, selected, sx, ...other }: OptionItemProps) {
       <Iconify
         width={28}
         icon={
-          (option.label === 'Standard' && 'carbon:delivery') ||
-          (option.label === 'Express' && 'carbon:rocket') ||
+          (option.label === 'Nhanh' && 'carbon:delivery') ||
+          (option.label === 'Cấp tốc' && 'carbon:rocket') ||
           'carbon:bicycle'
         }
       />
@@ -105,7 +106,7 @@ function OptionItem({ option, selected, sx, ...other }: OptionItemProps) {
             {option.label}
           </Box>
 
-          {`$${option.value}`}
+          {`${formatCurrencyVND(option.value)}`}
         </Box>
 
         <Box

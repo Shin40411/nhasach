@@ -11,7 +11,7 @@ import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
 import InputAdornment from '@mui/material/InputAdornment';
 
-import { fCurrency } from 'src/utils/format-number';
+import { fCurrency, formatCurrencyVND } from 'src/utils/format-number';
 
 import { Iconify } from 'src/components/iconify';
 
@@ -26,7 +26,7 @@ type Props = {
 export function CheckoutSummary({ onEdit, checkoutState, onApplyDiscount }: Props) {
   const { shipping, subtotal, discount, total } = checkoutState;
 
-  const displayShipping = shipping !== null ? 'Free' : '-';
+  const displayShipping = shipping !== null ? 'Miễn phí' : '-';
 
   const rowStyles: SxProps<Theme> = {
     display: 'flex',
@@ -35,11 +35,11 @@ export function CheckoutSummary({ onEdit, checkoutState, onApplyDiscount }: Prop
   return (
     <Card sx={{ mb: 3 }}>
       <CardHeader
-        title="Order summary"
+        title="Tóm tắt đơn hàng"
         action={
           onEdit && (
             <Button size="small" onClick={onEdit} startIcon={<Iconify icon="solar:pen-bold" />}>
-              Edit
+              Chỉnh sửa
             </Button>
           )
         }
@@ -51,14 +51,14 @@ export function CheckoutSummary({ onEdit, checkoutState, onApplyDiscount }: Prop
             variant="body2"
             sx={{ flexGrow: 1, color: 'text.secondary' }}
           >
-            Subtotal
+            Tạm tính
           </Typography>
           <Typography component="span" variant="subtitle2">
-            {fCurrency(subtotal)}
+            {formatCurrencyVND(subtotal)}
           </Typography>
         </Box>
 
-        <Box sx={{ ...rowStyles }}>
+        {/* <Box sx={{ ...rowStyles }}>
           <Typography
             component="span"
             variant="body2"
@@ -69,7 +69,7 @@ export function CheckoutSummary({ onEdit, checkoutState, onApplyDiscount }: Prop
           <Typography component="span" variant="subtitle2">
             {discount ? fCurrency(-discount) : '-'}
           </Typography>
-        </Box>
+        </Box> */}
 
         <Box sx={{ ...rowStyles }}>
           <Typography
@@ -77,10 +77,10 @@ export function CheckoutSummary({ onEdit, checkoutState, onApplyDiscount }: Prop
             variant="body2"
             sx={{ flexGrow: 1, color: 'text.secondary' }}
           >
-            Shipping
+            Phí giao hàng
           </Typography>
           <Typography component="span" variant="subtitle2">
-            {shipping ? fCurrency(shipping) : displayShipping}
+            {shipping ? formatCurrencyVND(shipping) : displayShipping}
           </Typography>
         </Box>
 
@@ -88,7 +88,7 @@ export function CheckoutSummary({ onEdit, checkoutState, onApplyDiscount }: Prop
 
         <Box sx={{ ...rowStyles }}>
           <Typography component="span" variant="subtitle1" sx={{ flexGrow: 1 }}>
-            Total
+            Tổng cộng
           </Typography>
 
           <Box sx={{ textAlign: 'right' }}>
@@ -97,15 +97,15 @@ export function CheckoutSummary({ onEdit, checkoutState, onApplyDiscount }: Prop
               variant="subtitle1"
               sx={{ display: 'block', color: 'error.main' }}
             >
-              {fCurrency(total)}
+              {formatCurrencyVND(total)}
             </Typography>
-            <Typography variant="caption" sx={{ fontStyle: 'italic' }}>
+            {/* <Typography variant="caption" sx={{ fontStyle: 'italic' }}>
               (VAT included if applicable)
-            </Typography>
+            </Typography> */}
           </Box>
         </Box>
 
-        {onApplyDiscount && (
+        {/* {onApplyDiscount && (
           <TextField
             fullWidth
             placeholder="Discount codes / Gifts"
@@ -122,7 +122,7 @@ export function CheckoutSummary({ onEdit, checkoutState, onApplyDiscount }: Prop
               },
             }}
           />
-        )}
+        )} */}
       </Stack>
     </Card>
   );

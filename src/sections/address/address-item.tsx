@@ -47,13 +47,13 @@ export function AddressItem({ address, action, sx, ...other }: Props) {
 
           {address.primary && (
             <Label color="info" sx={{ ml: 1 }}>
-              Default
+              Mặc định
             </Label>
           )}
         </Box>
 
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          {address.fullAddress}
+            {address.fullAddress.replace(/(, )+$/, '')}
         </Typography>
 
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
