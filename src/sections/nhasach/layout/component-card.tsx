@@ -14,75 +14,41 @@ import { varTap, varHover, transitionTap } from 'src/components/animate';
 
 import type { NavItemData } from './nav-config-components';
 import { formatCurrencyVND } from 'src/utils/format-number';
-import { IconButton } from '@mui/material';
+import { Fab, IconButton } from '@mui/material';
 import { Iconify } from 'src/components/iconify';
 import { CheckoutContextValue, ICheckoutItem } from 'src/types/checkout';
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { IBookItem } from 'src/types/book';
+import { useCheckoutContext } from 'src/sections/checkout/context';
 // ----------------------------------------------------------------------
 
 type ComponentCardProps = BoxProps<'a'> & {
   item: NavItemData;
-  onAddToCart?: CheckoutContextValue['onAddToCart'];
 };
 
-export function ComponentCard({ item, onAddToCart, sx, ...other }: ComponentCardProps) {
-  const product = () => ({
-    id: item.idBook || '',
-    title: item.name,
-    subject: item.packageType || '',
-    grade: item.class,
-    price: item.priceBook || '',
-    coverUrl: item.icon,
-    author: item.author || '',
-  });
+export function ComponentCard({ item, sx, ...other }: ComponentCardProps) {
+  const { onAddToCart } = useCheckoutContext();
 
-  const {
-    id,
-    title,
-    subject,
-    author,
-    grade,
-    price,
-    coverUrl
-  } = product();
+  const { idBook, name, priceBook, class: className, packageType, icon, author } = item;
 
-  const defaultValues = {
-    id,
-    title,
-    subject,
-    author,
-    grade,
-    price,
-    quantity: 1,
-    coverUrl
-  };
-
-  const methods = useForm<typeof defaultValues>({
-    defaultValues,
-  });
-
-  const { watch } = methods;
-  const values = watch();
-  const handleAddCart = useCallback(() => {
+  const handleAddCart = async () => {
+    const newProduct = {
+      id: idBook || '',
+      name,
+      coverUrl: icon,
+      available: 100,
+      price: Number(priceBook),
+      colors: [className],
+      size: packageType || '',
+      quantity: 1,
+    };
     try {
-      const newItem: ICheckoutItem = {
-        ...values,
-        subtotal: Number(values.price) * values.quantity,
-        price: Number(values.price),
-        name: values.title,
-        size: values.subject,
-        coverUrl: values.coverUrl || '',
-        colors: [values.grade],
-        available: 100
-      };
-
-      onAddToCart?.(newItem);
+      onAddToCart?.(newProduct);
     } catch (error) {
       console.error(error);
     }
-  }, [onAddToCart, values]);
+  };
 
   return (
     <>
@@ -136,22 +102,7 @@ export function ComponentCard({ item, onAddToCart, sx, ...other }: ComponentCard
           ]}
         >
           <m.div whileTap={varTap(0.98)} whileHover={varHover()} transition={transitionTap()}>
-            <Box sx={{ position: 'relative' }}>
-              <Image alt={item.name} src={item.icon} ratio="1/1" disablePlaceholder />
-              <Box sx={{
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-                px: 1,
-                backgroundColor: '#ff6c6b',
-                borderRadius: '5px 0px 0px',
-                fontSize: '14px',
-                fontWeight: 'bold',
-                color: '#fff'
-              }}>
-                {formatCurrencyVND(item.priceBook || '')}
-              </Box>
-            </Box>
+            <Image alt={item.name} src={item.icon} ratio="1/1" disablePlaceholder />
           </m.div>
         </Box>
 
@@ -159,27 +110,31 @@ export function ComponentCard({ item, onAddToCart, sx, ...other }: ComponentCard
           {item.name}
         </Typography>
 
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <IconButton
-            sx={{
-              backgroundColor: 'red',
-              color: '#fff',
-              m: 1,
-              '&:hover': {
-                color: 'red',
-                backgroundColor: '#fff',
-              },
-            }}
-            title='Thêm vào giỏ hàng'
-            aria-label="thêm vào giỏ hàng"
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Box sx={{
+            px: 1,
+            fontSize: '14px',
+            fontWeight: 'bold',
+          }}>
+            {formatCurrencyVND(item.priceBook || '')}
+          </Box>
+
+          <Fab
+            size="medium"
+            color="warning"
             onClick={(event) => {
               event.stopPropagation();
               event.preventDefault();
               handleAddCart();
             }}
+            sx={{
+              backgroundColor: 'red',
+              color: '#fff',
+              m: 1,
+            }}
           >
-            <Iconify icon="solar:cart-3-bold" />
-          </IconButton>
+            <Iconify icon="solar:cart-plus-bold" width={24} />
+          </Fab>
         </Box>
       </Box>
     </>

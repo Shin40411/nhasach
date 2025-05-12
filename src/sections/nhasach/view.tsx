@@ -17,7 +17,7 @@ import { useCheckoutContext } from '../checkout/context';
 
 
 export function NhaSachView() {
-  const { state: checkoutState, onAddToCart } = useCheckoutContext();
+  const { state: checkoutState } = useCheckoutContext();
 
   return (
     <ComponentLayout
@@ -47,7 +47,7 @@ export function NhaSachView() {
               }}
             >
               {section.items.map((item) => (
-                <ComponentCard key={item.name} item={item} onAddToCart={onAddToCart} />
+                <ComponentCard key={item.name} item={item} />
               ))}
             </Box>
           </section>

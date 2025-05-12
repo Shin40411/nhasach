@@ -55,6 +55,9 @@ export const mainRoutes: RouteObject[] = [
           {
             path: ':idBook/:name', element: <ChiTietSachPage />,
           },
+          // {
+          //   path: 'product', element: <ProductListPage /> 
+          // },
           {
             path: 'product/checkout', element: <ProductCheckoutPage />,
           },

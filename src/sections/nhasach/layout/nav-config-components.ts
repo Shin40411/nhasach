@@ -38,6 +38,7 @@ const createNavItem = ({ category, name, iconPrefix, packageType, class: classNa
   packageType,
   class: className,
   priceBook: priceBook,
+  idBook: idBook,
   author: author
 });
 
