@@ -12,6 +12,8 @@ export type NavItemData = {
   packageType?: string;
   class: string;
   priceBook?: string;
+  idBook?: string;
+  author?: string;
 };
 
 type CreateNavItemProps = {
@@ -22,16 +24,19 @@ type CreateNavItemProps = {
   class: string;
   idBook?: string;
   priceBook?: string;
+  author?: string;
 };
 
-const createNavItem = ({ category, name, iconPrefix, packageType, class: className, idBook, priceBook }: CreateNavItemProps): NavItemData => ({
+const createNavItem = ({ category, name, iconPrefix, packageType, class: className, idBook, priceBook, author }: CreateNavItemProps) => ({
   name,
   href: generateNavHref(packageType, className),
   hrefChildren: `/${idBook}/${kebabCaseVietnamese(name)}`,
   icon: `${CONFIG.assetsDir}/assets/Thumbnail/${iconPrefix}`,
   packageType,
   class: className,
-  priceBook: priceBook
+  priceBook: priceBook,
+  idBook: idBook,
+  author: author
 });
 
 export const getAllComponents = () => {
@@ -79,27 +84,7 @@ export const getAllComponents = () => {
 
     return acc;
   }, {} as Record<string, NavItemData[]>);
-  // const sgkGroupedNav = DanhSachSGK.reduce((acc, curr) => {
-  //   const monHoc = curr['Môn học'];
-  //   const tenSach = curr['Tên sách'];
-  //   const lop = curr['Lớp'];
-  //   if (!acc[monHoc]) {
-  //     acc[monHoc] = [];
-  //   }
-
-  //   acc[monHoc].push(
-  //     createNavItem({
-  //       category: 'sgk',
-  //       name: tenSach,
-  //       iconPrefix: 'sgk',
-  //       packageType: monHoc,
-  //       class: lop,
-  //     })
-  //   );
-
-  //   return acc;
-  // }, {} as Record<string, NavItemData[]>);
-
+  
   return Object.entries(sgkGroupedNav).map(([title, items]) => ({
     title,
     items,

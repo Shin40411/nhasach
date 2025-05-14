@@ -1,0 +1,1 @@
+import{bM as e,bN as r,k as m,j as p,B as u}from"./index-BPi-lj99.js";function c({children:n,viewport:o,disableAnimate:i=!0,...s}){const t=e(a=>a.breakpoints.down("sm"))&&i?{}:{component:m.div,initial:"initial",whileInView:"animate",variants:r(),viewport:{once:!0,amount:.3,...o}};return p.jsx(u,{...t,...s,children:n})}export{c as M};

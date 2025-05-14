@@ -1,1 +1,0 @@
-import{j as t,x as a}from"./index-usks_mw-.js";import{B as e}from"./view-Dqelxq-k.js";const r={title:`Blank | Dashboard - ${a.appName}`};function n(){return t.jsxs(t.Fragment,{children:[t.jsx("title",{children:r.title}),t.jsx(e,{})]})}export{n as default};

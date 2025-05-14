@@ -7,17 +7,6 @@ import { BOOKS } from 'src/actions/book';
 import { getInitials } from 'src/utils/getInitials';
 // ----------------------------------------------------------------------
 
-type CreateNavItemProps = {
-  name: string;
-  packageType?: string;
-  iconPrefix: string;
-  category: 'foundation' | 'mui' | 'extra' | 'sgk';
-  class: string;
-  idBook?: string;
-  priceBook?: string;
-  author?: string;
-};
-
 export type NavItemData = {
   name: string;
   icon: string;
@@ -27,6 +16,17 @@ export type NavItemData = {
   class: string;
   priceBook?: string;
   idBook?: string;
+  author?: string;
+};
+
+type CreateNavItemProps = {
+  name: string;
+  packageType?: string;
+  iconPrefix: string;
+  category: 'foundation' | 'mui' | 'extra' | 'sgk';
+  class: string;
+  idBook?: string;
+  priceBook?: string;
   author?: string;
 };
 
@@ -43,7 +43,7 @@ const createNavItem = ({ category, name, iconPrefix, packageType, class: classNa
 });
 
 const sgkGroupedNav = BOOKS.reduce((acc, book) => {
-  const { subject, title, grade, id, price, author } = book;
+  const { subject, title, grade, id, price } = book;
 
   if (!acc[subject]) {
     acc[subject] = [];

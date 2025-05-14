@@ -9,6 +9,8 @@ import { paths } from 'src/routes/paths';
 import { Iconify } from 'src/components/iconify';
 import { allComponents } from 'src/sections/nhasach/layout';
 import { kebabCaseVietnamese } from 'src/utils/kebabVN';
+import { useCheckoutContext } from 'src/sections/checkout/context';
+import { CartIcon } from 'src/sections/detailsbook/cart-icon';
 
 const containerStyles: SxProps<Theme> = {
     mt: 5,
@@ -16,6 +18,8 @@ const containerStyles: SxProps<Theme> = {
 };
 
 export function CategoryBook() {
+    const { state: checkoutState } = useCheckoutContext();
+
     const { packageType, className } = useParams();
 
 
@@ -112,8 +116,12 @@ export function CategoryBook() {
     ];
 
     return (
-        <ComponentLayout
-            sectionData={Category_Components}
-        />
+        <>
+            <CartIcon totalItems={checkoutState.totalItems} />
+
+            <ComponentLayout
+                sectionData={Category_Components}
+            />
+        </>
     );
 }

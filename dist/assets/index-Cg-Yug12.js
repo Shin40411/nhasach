@@ -1,0 +1,1 @@
+import{j as t,o as a}from"./index-BPi-lj99.js";import{B as e}from"./view-kBbBXIz1.js";const r={title:`Blank | Dashboard - ${a.appName}`};function n(){return t.jsxs(t.Fragment,{children:[t.jsx("title",{children:r.title}),t.jsx(e,{})]})}export{n as default};

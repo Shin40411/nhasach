@@ -1,1 +1,0 @@
-import{j as o,B as s,bN as r,h as m}from"./index-usks_mw-.js";function f({sx:a,animate:t,children:n,action:i=!1,...e}){return o.jsx(s,{component:m.div,variants:r(),initial:i?!1:"initial",animate:i?t?"animate":"exit":"animate",exit:i?void 0:"exit",sx:a,...e,children:n})}export{f as M};

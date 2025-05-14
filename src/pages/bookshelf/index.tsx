@@ -1,17 +1,17 @@
 import { CONFIG } from 'src/global-config';
 
-import { ComponentsView } from 'src/sections/_examples/view';
+import { NhaSachView } from 'src/sections/nhasach/view';
 
 // ----------------------------------------------------------------------
 
-const metadata = { title: `All components | MUI - ${CONFIG.appName}` };
+const metadata = { title:  `Danh mục - ${CONFIG.appName}` };
 
 export default function Page() {
   return (
     <>
       <title>{metadata.title}</title>
 
-      <ComponentsView />
+      <NhaSachView />
     </>
   );
 }

@@ -117,7 +117,7 @@ export function ComponentLayout({
         ]}
       />
       {children ?? (
-        <LayoutSection>
+        <LayoutSection sx={{padding: '0'}}>
           {sectionData?.map((section) => {
             const hashId = `${kebabCase(section.name)}`;
 
@@ -138,7 +138,7 @@ export function ComponentLayout({
                     },
                   }}
                 />
-                <CardContent>{section.component}</CardContent>
+                <CardContent sx={{padding: '16px 0 24px 0'}}>{section.component}</CardContent>
               </Card>
             );
           })}

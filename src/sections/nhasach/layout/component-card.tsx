@@ -57,6 +57,9 @@ export function ComponentCard({ item, sx, ...other }: ComponentCardProps) {
         href={item.hrefChildren}
         sx={[
           (theme) => ({
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
             color: 'inherit',
             borderRadius: 1.25,
             overflow: 'hidden',
@@ -106,35 +109,40 @@ export function ComponentCard({ item, sx, ...other }: ComponentCardProps) {
           </m.div>
         </Box>
 
-        <Typography variant="subtitle2" sx={{ p: 2 }}>
-          {item.name}
-        </Typography>
+        <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: '1' }}>
+          <Typography variant="subtitle2" sx={{ px: 0.5, py: 2, lineHeight: '0.999' }}>
+            {item.name}
+          </Typography>
 
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Box sx={{
-            px: 1,
-            fontSize: '14px',
-            fontWeight: 'bold',
-          }}>
-            {formatCurrencyVND(item.priceBook || '')}
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto' }}>
+            <Box sx={{
+              px: 1,
+              fontSize: '14px',
+              fontWeight: 'bold',
+            }}>
+              {formatCurrencyVND(item.priceBook || '')}
+            </Box>
+
+            <Fab
+              size="medium"
+              color="warning"
+              onClick={(event) => {
+                event.stopPropagation();
+                event.preventDefault();
+                handleAddCart();
+              }}
+              sx={{
+                backgroundColor: 'red',
+                color: '#fff',
+                m: 1,
+                height: '40px',
+                px: '14px',
+                zIndex: '0'
+              }}
+            >
+              <Iconify icon="solar:cart-plus-bold" width={20} />
+            </Fab>
           </Box>
-
-          <Fab
-            size="medium"
-            color="warning"
-            onClick={(event) => {
-              event.stopPropagation();
-              event.preventDefault();
-              handleAddCart();
-            }}
-            sx={{
-              backgroundColor: 'red',
-              color: '#fff',
-              m: 1,
-            }}
-          >
-            <Iconify icon="solar:cart-plus-bold" width={24} />
-          </Fab>
         </Box>
       </Box>
     </>

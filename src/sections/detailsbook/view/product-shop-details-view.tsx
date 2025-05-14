@@ -154,6 +154,7 @@ export function ProductShopDetailsView({ product, error, loading }: Props) {
       <CustomBreadcrumbs
         links={[
           { name: 'Trang chủ', href: '/' },
+          { name: 'Danh mục', href: '/danh-muc' },
           { name: product?.title },
         ]}
         sx={{ mb: 5 }}

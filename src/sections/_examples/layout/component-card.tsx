@@ -14,6 +14,9 @@ import { varTap, varHover, transitionTap } from 'src/components/animate';
 
 import type { NavItemData } from './nav-config-components';
 import { formatCurrencyVND } from 'src/utils/format-number';
+import { Iconify } from 'src/components/iconify';
+import { Fab } from '@mui/material';
+import { useCheckoutContext } from 'src/sections/checkout/context';
 
 // ----------------------------------------------------------------------
 
@@ -22,12 +25,37 @@ type ComponentCardProps = BoxProps<'a'> & {
 };
 
 export function ComponentCard({ item, sx, ...other }: ComponentCardProps) {
+  const { onAddToCart } = useCheckoutContext();
+
+  const { idBook, name, priceBook, class: className, packageType, icon, author } = item;
+
+  const handleAddCart = async () => {
+    const newProduct = {
+      id: idBook || '',
+      name,
+      coverUrl: icon,
+      available: 100,
+      price: Number(priceBook),
+      colors: [className],
+      size: packageType || '',
+      quantity: 1,
+    };
+    try {
+      onAddToCart?.(newProduct);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Box
       component={RouterLink}
       href={item.hrefChildren}
       sx={[
         (theme) => ({
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
           color: 'inherit',
           borderRadius: 1.25,
           overflow: 'hidden',
@@ -73,28 +101,50 @@ export function ComponentCard({ item, sx, ...other }: ComponentCardProps) {
         ]}
       >
         <m.div whileTap={varTap(0.98)} whileHover={varHover()} transition={transitionTap()}>
-          <Box sx={{ position: 'relative' }}>
-            <Image alt={item.name} src={item.icon} ratio="1/1" disablePlaceholder />
-            <Box sx={{
-              position: 'absolute',
-              bottom: 0,
-              right: 0,
-              px: 1,
-              backgroundColor: '#ff6c6b',
-              borderRadius: '5px 0px 0px',
-              fontSize: '14px',
-              fontWeight: 'bold',
-              color: '#fff'
-            }}>
-              {formatCurrencyVND(item.priceBook || '')}
-            </Box>
-          </Box>
+          <Image alt={item.name} src={item.icon} ratio="1/1" disablePlaceholder />
         </m.div>
       </Box>
 
-      <Typography variant="subtitle2" sx={{ p: 2 }}>
-        {item.name}
-      </Typography>
+      <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: '1' }}>
+        <Typography variant="subtitle2" sx={{ px: 0.5, py: 2, lineHeight: '0.999' }}>
+          {item.name}
+        </Typography>
+
+        <Box sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginTop: 'auto'
+        }}>
+          <Box sx={{
+            px: 1,
+            fontSize: '14px',
+            fontWeight: 'bold',
+          }}>
+            {formatCurrencyVND(item.priceBook || '')}
+          </Box>
+
+          <Fab
+            size="medium"
+            color="warning"
+            onClick={(event) => {
+              event.stopPropagation();
+              event.preventDefault();
+              handleAddCart();
+            }}
+            sx={{
+              backgroundColor: 'red',
+              color: '#fff',
+              px: '14px',
+              height: '40px',
+              m: 1,
+              zIndex: '0'
+            }}
+          >
+            <Iconify icon="solar:cart-plus-bold" width={20} />
+          </Fab>
+        </Box>
+      </Box>
     </Box>
   );
 }

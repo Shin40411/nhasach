@@ -1,0 +1,1 @@
+import{j as o}from"./index-BPi-lj99.js";import{F as m}from"./styles-BkVqaM-o.js";function a({children:r,onSubmit:t,methods:e}){return o.jsx(m,{...e,children:o.jsx("form",{onSubmit:t,noValidate:!0,autoComplete:"off",children:r})})}export{a as F};
